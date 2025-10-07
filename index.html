@@ -1,55 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THRWLine</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THRWLine</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>THRWLine</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio </a></li>
-                <li><a href="#">Lo mas nuevo </a></li>
-                <li><a href="#">Novedades </a></li>
-                <li><a href="#">Hombre </a></li>
-                <li><a href="#">Mujer </a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="contenido">
-        <div class="articulos">
-            <div class="secciones">
-                <div>
-                    <h2>LO MAS NUEVO</h2>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    In quas omnis possimus sapiente labore sunt natus aut iste,
-                </div>
-                <div><img src="img/playera.jpg"></div>
-            </div>
-        </div>
-        <div class="menu-secundario">
-            <a href="">VER</a>
-        </div>
-    </div>
-    
-    <div class="menu-secundario">
-        <a href="#" id="btnVer">VER</a>
-    </div>
+  <!-- Portada -->
+  <section id="portada" class="portada">
+    <img src="img/portada.jpg" alt="Portada THRWLine">
+    <button id="btnVerTodo">VER TODO</button>
+  </section>
 
-    <!-- Modal oculto -->
-    <div id="modal" class="modal">
-    <div class="modal-contenido">
-        <span class="cerrar">&times;</span>
-        <h2>Playera THRWLine</h2>
-        <p>Playera deportiva de basquet de alta calidad. Precio: $450 MXN</p>
+  <!-- Productos destacados (ocultos al inicio) -->
+  <section id="productos" class="productos">
+    <h2>Productos destacados</h2>
+    <div class="grid-productos">
+      <div class="producto" data-nombre="Playera THRWLine" data-precio="450" data-img="img/playera.jpg">
         <img src="img/playera.jpg" alt="Playera">
+        <p>Playera THRWLine</p>
+      </div>
+      <div class="producto" data-nombre="Shorts THRWLine" data-precio="380" data-img="img/shorts.jpg">
+        <img src="img/shorts.jpg" alt="Shorts">
+        <p>Shorts THRWLine</p>
+      </div>
+      <div class="producto" data-nombre="Sudadera THRWLine" data-precio="1200" data-img="img/Sudadera.jpg">
+        <img src="img/sudadera.jpg" alt="Sudadera">
+        <p>Sudadera THRWLine</p>
+      </div>
     </div>
-    </div>
+  </section>
 
-    
-    <script src="js/script.js"></script>
+  <!-- Modal producto -->
+  <div id="modalProducto" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar">&times;</span>
+      <img id="modalImg" src="" alt="Producto">
+      <h2 id="modalNombre"></h2>
+      <p id="modalPrecio"></p>
+      <button id="btnCesta">Añadir a la cesta</button>
+      <button id="btnComprar">Comprar ahora</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
