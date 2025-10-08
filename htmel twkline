@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THWLINE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+   
+
+</head>
+
+<body>
+    <div class="menu container">
+    <img class="logo-1" src="imagenes/logo 1.png" alt="alt=" >
+    <input type="checkbox" id="menu" />
+    <label for="menu">
+        <img class="menu">
+        <img src="imagenes/menu.png" class="menu-icono" alt="">
+        <nav class="navbar">
+            <div class="menu-1">
+                <ul>
+                <li><a href="#">Inicio</a></li>
+                 <li><a href="#">Basicos</a></li>
+                 <li><a href="#">Shorts</a></li>
+                  <li><a href="#">Ofertas</a></li>
+                </ul>
+            </div>
+            <img class="logo-2" src="imagenes/logo 2.png" alt="">
+            <div class="menu-2">
+                <a href="https://www.instagram.com/trhwline/?igsh=MXFtMzZtZWl3a3N6bg%3D%3D#">
+                    <div class="social">
+                    <img src="imagenes/s3.svg" alt="">
+                    </div>
+                    
+                    
+                </a>
+            </div>
+            
+        </nav>
+    </label>
+    </div>
+</body>
