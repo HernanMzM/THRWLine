@@ -7,20 +7,19 @@
     font-family: Arial, sans-serif;
 }
 
-/* Fondo general */
 body {
     background-color: #fff;
     color: #000;
 }
 
-/* ----- HEADER ----- */
 .header {
-    background-color: #000;
+    background-color: #1a1a1a; 
     padding: 10px 0;
     color: white;
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: 1px solid #333;
 }
 
 .nav-container {
@@ -63,7 +62,6 @@ body {
     transform: scale(1.2);
 }
 
-/* ----- SIDEBAR ----- */
 .sidebar {
     position: fixed;
     top: 80px;
@@ -92,7 +90,6 @@ body {
     color: #ff7b00;
 }
 
-/* ----- PRODUCTOS ----- */
 .productos-grid {
     margin-left: 220px;
     padding: 40px 60px;
@@ -134,7 +131,6 @@ body {
     margin-top: 5px;
 }
 
-/* ----- FOOTER ----- */
 .footer {
     background-color: #111;
     color: white;
