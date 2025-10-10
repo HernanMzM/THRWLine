@@ -3,53 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - THWLINE</title>
-    <link rel="stylesheet" href="style.css">
+    <title>THRWLINE - Productos</title>
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
 
-    <div class="menu container">
-        <img class="logo-1" src="imagenes/logo 1.png" alt="Logo">
-        <input type="checkbox" id="menu" />
-        <label for="menu">
-            <img src="imagenes/menu.png" class="menu-icono" alt="">
-        </label>
-        <nav class="navbar">
-            <div class="menu-1">
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="#">Basicos</a></li>
-                    <li><a href="#">Shorts</a></li>
-                    <li><a href="#">Ofertas</a></li>
-                </ul>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#">LO MAS NUEVO</a>
+                <a href="#">OFERTAS</a>
+                <a href="#">HOMBRE</a>
+                <a href="#">MUJER</a>
+                <a href="#">CONTACTO</a>
             </div>
-            <img class="logo-2" src="imagenes/logo 2.png" alt="">
-            <div class="menu-2">
-                <a href="https://www.instagram.com/trhwline/">
-                    <div class="social">
-                        <img src="imagenes/s3.svg" alt="">
-                    </div>
-                </a>
-            </div>
-        </nav>
-    </div>
 
-    <main class="productos-container">
+            <div class="logo">
+                <img src="imagenes/logo 2.png" alt="THRWLINE">
+            </div>
+
+            <div class="nav-right">
+                <img src="imagenes/user-icon.png" alt="Usuario" class="icono">
+                <img src="imagenes/cart-icon.png" alt="Carrito" class="icono">
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <ul>
+            <li><a href="#">Playeras</a></li>
+            <li><a href="#">Sudaderas</a></li>
+            <li><a href="#">Chamarras</a></li>
+            <li><a href="#">Pans</a></li>
+            <li><a href="#">Shorts</a></li>
+            <li><a href="#">Conjuntos</a></li>
+        </ul>
+    </aside>
+
+    <!-- Productos -->
+    <main class="productos-grid">
         <div class="producto">
-            <img src="imagenes/prenda1.jpg" alt="Prenda 1">
-            <h2>Nombre de la prenda</h2>
-            <p class="precio">$29.990</p>
-            <a href="THRWLine2.html" class="btn-ver">Ver producto</a>
+            <img src="imagenes/prenda1.jpg" alt="Playera basquetbol basica">
+            <p class="nombre">Playera de basquetbol basica</p>
+            <p class="precio">$300</p>
         </div>
 
         <div class="producto">
-            <img src="imagenes/prenda2.jpg" alt="Prenda 2">
-            <h2>Otra prenda</h2>
-            <p class="precio">$24.990</p>
-            <a href="THRWLine2.html" class="btn-ver">Ver producto</a>
+            <img src="imagenes/prenda2.jpg" alt="Sudadera basica">
+            <p class="nombre">Sudadera basica</p>
+            <p class="precio">$300</p>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/prenda3.jpg" alt="Hoodie basico">
+            <p class="nombre">Hoodie basico</p>
+            <p class="precio">$300</p>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/prenda4.jpg" alt="Pants basicos">
+            <p class="nombre">Pants basicos</p>
+            <p class="precio">$300</p>
         </div>
     </main>
 
-</body>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Acerca de nosotros</p>
+        <p>Terminos de uso</p>
+    </footer>
 
+</body>
 </html>

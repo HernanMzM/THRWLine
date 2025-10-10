@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: Arial, sans-serif;
+}
+
+/* Fondo general */
+body {
+    background-color: #fff;
+    color: #000;
+}
+
+/* ----- HEADER ----- */
+.header {
+    background-color: #000;
+    padding: 10px 0;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+}
+
+.nav-left a {
+    color: white;
+    margin: 0 10px;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.nav-left a:hover {
+    color: #ff7b00;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icono {
+    width: 25px;
+    cursor: pointer;
+    filter: invert(1);
+    transition: transform 0.3s;
+}
+
+.icono:hover {
+    transform: scale(1.2);
+}
+
+/* ----- SIDEBAR ----- */
+.sidebar {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 180px;
+    padding: 20px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    height: 100%;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar a {
+    color: #000;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.sidebar a:hover {
+    color: #ff7b00;
+}
+
+/* ----- PRODUCTOS ----- */
+.productos-grid {
+    margin-left: 220px;
+    padding: 40px 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.producto {
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.producto img {
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+}
+
+.producto:hover img {
+    transform: scale(1.05);
+}
+
+.nombre {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #000;
+}
+
+.precio {
+    color: #000;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* ----- FOOTER ----- */
+.footer {
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+.footer p {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.footer p:hover {
+    color: #ff7b00;
+}
