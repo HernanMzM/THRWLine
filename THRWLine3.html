@@ -2,28 +2,54 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio de sesión - TreeLine</title>
+  <title>Login y Registro</title>
   <link rel="stylesheet" href="style3.css">
 </head>
 <body>
-  <div class="login-container">
-    <div class="login-box">
-      <img src="usuario.png" alt="Usuario" class="login-icon">
+
+  <h1>THRWLINE</h1>
+
+  <div class="cuadro">
+
+   
+    <img src="thrw.png" alt="Logo THRWLINE" class="imagenthrw">
+
+    <form id="formLogin">
       <h2>Iniciar sesión</h2>
-      <form id="formLogin">
-        <label for="Correo">Correo</label>
-        <input type="text" id="Correo" placeholder="Ingrese su correo" required>
 
-        <label for="contra">Contraseña</label>
-        <input type="password" id="contra" placeholder="Ingrese su contraseña" required>
+      <label>Correo:</label>
+      <input type="email" id="correoLogin">
 
-        <button type="submit" class="btn-login">Entrar</button>
-      </form> 
-    </div>
+      <label>Contraseña:</label>
+      <input type="password" id="passLogin">
+
+      <button type="submit">Confirmar</button>
+
+      <p>¿No tienes cuenta?</p>
+      <button id="irRegistro" class="btn-negro">Registrarse</button>
+    </form>
+
+    <form id="formRegistro" style="display: none;">
+      <h2>Registro</h2>
+
+      <label>Nombre:</label>
+      <input type="text" id="nombre">
+
+      <label>Correo:</label>
+      <input type="email" id="correoRegistro">
+
+      <label>Contraseña:</label>
+      <input type="password" id="passRegistro">
+
+      <button type="submit">Registrar</button>
+
+      <p> ¿Aún no tienes cuenta? </p>
+      <button id="irLogin" class="btn-negro">Iniciar sesión</button>
+    </form>
+
   </div>
-  
-  <script src="script.js"></script>
+
+  <script src="script3.js"></script>
 </body>
 </html>
