@@ -11,11 +11,10 @@
 }
 
 body {
-<<<<<<< HEAD
+    
     font-family: sans-serif; 
     background-color: #fff;
     color: #000;
->>>>>>> c55acff (.)
 }
 header {
     background-color: #1a1a1a; 
@@ -103,14 +102,7 @@ button{
     height: 100%;
     
 }
-.Portada img{
-    width: 50%;
-    height: auto;
-    margin-top: 5px;
 
-   
-
-}
 
 
 #menu {
