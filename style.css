@@ -101,7 +101,14 @@ button{
     height: 100%;
     
 }
+.Portada img{
+    width: 50%;
+    height: auto;
+    margin-top: 5px;
 
+   
+
+}
 
 
 #menu {
