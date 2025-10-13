@@ -13,8 +13,8 @@
 body {
     
     font-family: sans-serif; 
-    background-color: #000;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
 }
 header {
     background-color: #1a1a1a; 
@@ -103,13 +103,13 @@ button{
     
 }
 .Portada {
-margin-top: 0px;
+margin-top: 10px;
 width: 100%;
 }
 .Portada img{
     background-color: #000;
     width: 100%;
-    height: auto;
+    height: 50%;
     display: block;
 }
 
@@ -130,8 +130,28 @@ label[for="menu"] .logo-2 {
     filter: invert(100%); 
 }
 
-
-
+h2{
+    position: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #ff4500;
+    width: fit-content;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1{
+    position: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
 @media (max-width: 991px) {
     
     .menu {
