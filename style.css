@@ -13,8 +13,8 @@
 body {
     
     font-family: sans-serif; 
-    background-color: #fff;
-    color: #000;
+    background-color: #000;
+    color: #fff;
 }
 header {
     background-color: #1a1a1a; 
@@ -102,8 +102,16 @@ button{
     height: 100%;
     
 }
-
-
+.Portada {
+margin-top: 0px;
+width: 100%;
+}
+.Portada img{
+    background-color: #000;
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
 #menu {
     display: none;
