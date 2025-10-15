@@ -53,45 +53,60 @@
     </header>
 
     <main class="carrito">
-        <h2>TU CARRITO</h2>
-        <div class="carrito-contenido">
+        <div class="producto-detalle">
+            <div class="imagenes-producto">
+            <img src="imagenes/prenda1.jpg" alt="Playera de basquetbol" class="imagen-principal">
+            <div class="miniaturas">
+                <img src="imagenes/prenda1.jpg" alt="Miniatura 1">
+            </div>
+            </div>
 
-            <div class="producto-info">
-                <img src="imagenes/prenda1.jpg" alt="Short de basquetbol">
-                <div class="detalles">
-                    <h3>THRWLINE</h3>
-                    <p>Short de fitness basquetbol de hombre</p>
-                    <p class="talla">Talla: G</p>
+            <div class="info-producto">
+            <h2>Short de Basquetbol THRWLINE</h2>
+            <p class="precio">$300.00 MXN</p>
 
-                    <div class="cantidad">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
-                    </div>
-
-                    <p class="envio">
-                        Envío<br>
-                        Llega el jueves 25 de sep. 
-                        <a href="#">Editar ubicación</a>
-                    </p>
+            <div class="tallas">
+                <p>Talla</p>
+                <div class="opciones-talla">
+                    <button class="activa">S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
                 </div>
             </div>
 
-            <div class="resumen">
-                <h3>Resumen</h3>
-                <p><span>Subtotal</span><span>$300.00</span></p>
-                <p><span>Gastos de envío y gestión estimados</span><span>$100.00</span></p>
-                <hr>
-                <p class="total"><span>Total</span><span>$400.00</span></p>
-                <button class="btn-pagar">PAGAR</button>
+            <div class="cantidad">
+                <p>Cantidad</p>
+                <div class="botones-cantidad">
+                    <button>-</button>
+                    <span>1</span>
+                    <button>+</button>
+                </div>
             </div>
 
+            <p class="stock">En existencia</p>
+
+            <button class="btn-agregar">Agregar al carrito</button>
+            <button class="btn-pagar">Pagar ahora</button>
+
+            <div class="detalles-envio">
+                <p><strong>Envío gratis</strong> en pedidos mayores a $500</p>
+                <p>Entrega estimada: jueves 25 de septiembre</p>
+            </div>
+            </div>
         </div>
     </main>
 
     <footer class="footer">
-        <a href="#">Acerca de nosotros</a>
-        <a href="#">Términos de uso</a>
+        <a href="#" id="btnAcerca">Acerca de nosotros</a>
+        <a href="#" id="btnTerminos">Términos de uso</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=leonardoluna2008@gmail.com&su=Consulta%20sobre%20THRWLINE&body=Hola%2C%20quisiera%20más%20información%20sobre%20sus%20servicios."
+            target="_blank" title="Enviar correo por Gmail">Contacto</a>
+        <a href="https://wa.me/522213729379?text=Hola%2C%20quiero%20más%20información%20sobre%20THRWLINE"
+            target="_blank" title="Enviar mensaje por WhatsApp">WhatsApp: +52 221 372 9379</a>
+        <a href="https://www.instagram.com/trhwline?igsh=MXFtMzZtZWl3a3N6bg==" target="_blank">
+            <img src="imagenes/insta2.png" alt="Instagram THRWLINE">
+        </a>
     </footer>
 
 </body>

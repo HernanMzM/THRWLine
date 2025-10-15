@@ -227,3 +227,269 @@ h1{
 }
 
 /**/
+
+
+/* ===== SECCION DEL CARRITO / DETALLE DE PRODUCTO ===== */
+
+.carrito {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+/* Distribucion principal */
+.producto-detalle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* ----- IMAGENES ----- */
+.imagenes-producto {
+  flex: 1;
+  text-align: center;
+}
+
+.imagen-principal {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.miniaturas {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.miniaturas img {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.miniaturas img:hover {
+  border-color: #000;
+}
+
+/* ----- INFORMACION DEL PRODUCTO ----- */
+.info-producto {
+  flex: 1;
+  max-width: 450px;
+}
+
+.info-producto h2 {
+  font-size: 33px;
+  font-weight: lighter;
+  margin-bottom: 30px;
+}
+
+.precio {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Tallas */
+.tallas p {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.opciones-talla {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.opciones-talla button {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.opciones-talla button:hover,
+.opciones-talla button.activa {
+  border-color: #000;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Cantidad */
+.cantidad p {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.botones-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.botones-cantidad button {
+  background-color: #f3f3f3;
+  border: none;
+  padding: 6px 1%;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.botones-cantidad button:hover {
+  background-color: #ddd;
+}
+
+.botones-cantidad span {
+  font-size: 16px;
+}
+
+/* Stock y envio */
+.stock {
+  color: #008000;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+/* Botones principales */
+.btn-agregar,
+.btn-pagar {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 12px;
+}
+
+.btn-agregar {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+.btn-agregar:hover {
+  background-color: #cfcfcf;
+}
+
+.btn-pagar {
+  background-color: #f7c600;
+  color: #000;
+}
+
+.btn-pagar:hover {
+  background-color: #e0b800;
+}
+
+/* Detalles de envio */
+.detalles-envio {
+  font-size: 14px;
+  color: #555;
+  margin-top: 25px;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+}
+
+.detalles-envio p {
+  margin: 5px 0;
+}
+
+
+@media (max-width: 900px) {
+  .producto-detalle {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-producto {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .opciones-talla {
+    justify-content: center;
+  }
+
+  .botones-cantidad {
+    justify-content: center;
+  }
+}
+
+
+
+
+
+/* FOOTER */
+footer {
+  background-color: #111;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 30px; 
+  padding: 25px 15px;
+  margin-top: 40px;
+  font-size: 14px;
+  align-items: center;
+  flex-wrap: wrap; 
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.footer a:hover {
+  color: #ff7b00; 
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+
+.footer a[href*="wa.me"],
+.footer a[href*="mailto:"] {
+  background-color: #25D366;
+  color: white;
+  font-weight: 500;
+  padding: 8px 14px;
+}
+
+.footer a[href*="wa.me"]:hover,
+.footer a[href*="mailto:"]:hover {
+  background-color: #1ebe57;
+  color: white;
+}
+
+
+.footer img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.footer img:hover {
+  transform: scale(1.1);
+}
