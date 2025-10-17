@@ -25,6 +25,8 @@ formLogin.addEventListener("submit", function(e) {
   } else {
     alert("Bienvenido " + correo);
     formLogin.reset();
+     window.location.href = "index.html"; // 🔹 Redirige al index.html
+    
   }
 });
 
