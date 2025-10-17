@@ -23,8 +23,8 @@
                     <ul>
                         <li><a href="THRWLine2.html">Lo mas nuevo</a></li>
                         <li><a href="#">Ofertas</a></li>
-                        <li><a href="#">Hombre</a></li>
-                        <li><a href="#">Mujer</a></li>
+                        <li><a href="THRWLine2.html?categoria=Hombre">Hombre</a></li>
+                        <li><a href="THRWLine2.html?categoria=Mujer">Mujer</a></li>
                         <li><a href="#">Contacto</a></li>
                     </ul>
                 </div>
@@ -111,13 +111,11 @@
     </footer>
 
     <script>
-    // Leer los datos enviados por la URL
     const params = new URLSearchParams(window.location.search);
     const nombre = params.get("nombre");
     const precio = params.get("precio");
     const imagen = params.get("imagen");
 
-    // Cambiar el contenido dinámicamente
     if (nombre && precio && imagen) {
         document.querySelector(".info-producto h2").textContent = nombre;
         document.querySelector(".info-producto .precio").textContent = `$${precio}.00 MXN`;

@@ -30,76 +30,54 @@
     </aside>
 
     <main class="productos-grid">
-    <div class="producto">
-        <a href="producto.html?nombre=Playera%20basquetbol%20basica&precio=300&imagen=imagenes/prenda1.jpg">
-            <img src="imagenes/prenda1.jpg" alt="Playera basquetbol basica">
-            <p class="nombre">Playera de basquetbol basica</p>
-            <p class="precio">$300</p>
-        </a>
-    </div>
 
-    <div class="producto">
-        <a href="producto.html?nombre=Short%20basico&precio=300&imagen=imagenes/prenda2.jpg">
-            <img src="imagenes/prenda2.jpg" alt="Short basico">
-            <p class="nombre">Short basico</p>
-            <p class="precio">$300</p>
-        </a>
-    </div>
 
-    <div class="producto">
-        <a href="producto.html?nombre=Playera%20basica&precio=150&imagen=imagenes/playera1.jpg">
-            <img src="imagenes/playera1.jpg" alt="Playera basica">
-            <p class="nombre">Playera basica</p>
-            <p class="precio">$150</p>
-        </a>
-    </div>
+        <div class="producto" data-categoria="Hombre">
+            <a href="producto.html?nombre=Playera%20basquetbol%20basica&precio=300&imagen=imagenes/prenda1.jpg">
+                <img src="imagenes/prenda1.jpg" alt="Playera basquetbol basica">
+                <p class="nombre">Playera de basquetbol basica</p>
+                <p class="precio">$300</p>
+            </a>
+        </div>
+        <div class="producto" data-categoria="Hombre">
+            <a href="producto.html?nombre=Short%20basico&precio=300&imagen=imagenes/prenda2.jpg">
+                <img src="imagenes/prenda2.jpg" alt="Short basico">
+                <p class="nombre">Short basico</p>
+                <p class="precio">$300</p>
+            </a>
+        </div>
 
-    <div class="producto">
-        <a href="producto.html?nombre=Sudadera%20basica&precio=300&imagen=imagenes/sudadera1.jpg">
-            <img src="imagenes/sudadera1.jpg" alt="Sudadera basica">
-            <p class="nombre">Sudadera basica</p>
-            <p class="precio">$300</p>
-        </a>
-    </div>
+        <div class="producto" data-categoria="Hombre">
+            <a href="producto.html?nombre=Playera%20basica&precio=150&imagen=imagenes/playera1.jpg">
+                <img src="imagenes/playera1.jpg" alt="Playera basica">
+                <p class="nombre">Playera basica</p>
+                <p class="precio">$150</p>
+            </a>
+        </div>
 
-    <div class="producto">
-        <a href="producto.html?nombre=Sudadera%20premium&precio=350&imagen=imagenes/sudadera2.jpg">
-            <img src="imagenes/sudadera2.jpg" alt="Sudadera premium">
-            <p class="nombre">Sudadera premium</p>
-            <p class="precio">$350</p>
-        </a>
-    </div>
-    <div class="producto">
-        <a href="producto.html?nombre=Short%20basico&precio=300&imagen=imagenes/prenda2.jpg">
-            <img src="imagenes/prenda2.jpg" alt="Short basico">
-            <p class="nombre">Short basico</p>
-            <p class="precio">$300</p>
-        </a>
-    </div>
+        <div class="producto" data-categoria="Hombre">
+            <a href="producto.html?nombre=Sudadera%20basica&precio=300&imagen=imagenes/sudadera1.jpg">
+                <img src="imagenes/sudadera1.jpg" alt="Sudadera basica">
+                <p class="nombre">Sudadera basica</p>
+                <p class="precio">$300</p>
+            </a>
+        </div>
 
-    <div class="producto">
-        <a href="producto.html?nombre=Playera%20basica&precio=150&imagen=imagenes/playera1.jpg">
-            <img src="imagenes/playera1.jpg" alt="Playera basica">
-            <p class="nombre">Playera basica</p>
-            <p class="precio">$150</p>
-        </a>
-    </div>
+        <div class="producto" data-categoria="Hombre">
+            <a href="producto.html?nombre=Sudadera%20premium&precio=350&imagen=imagenes/sudadera2.jpg">
+                <img src="imagenes/sudadera2.jpg" alt="Sudadera premium">
+                <p class="nombre">Sudadera premium</p>
+                <p class="precio">$350</p>
+            </a>
+        </div>
 
-    <div class="producto">
-        <a href="producto.html?nombre=Sudadera%20basica&precio=300&imagen=imagenes/sudadera1.jpg">
-            <img src="imagenes/sudadera1.jpg" alt="Sudadera basica">
-            <p class="nombre">Sudadera basica</p>
-            <p class="precio">$300</p>
-        </a>
-    </div>
-
-    <div class="producto">
-        <a href="producto.html?nombre=Sudadera%20premium&precio=350&imagen=imagenes/sudadera2.jpg">
-            <img src="imagenes/sudadera2.jpg" alt="Sudadera premium">
-            <p class="nombre">Sudadera premium</p>
-            <p class="precio">$350</p>
-        </a>
-    </div>
+        <div class="producto" data-categoria="Mujer">
+            <a href="producto.html?nombre=Sudadera%20basicam&precio=300%imagen=imagenes/msudadera1.jpg">
+                <img src="imagenes/msudadera1.jpg" alt="Sudadera">
+                <p class="nombre">Sudadera basicam</p>
+                <p class="precio">$300</p>
+            </a>
+        </div>
 
 </main>
 
@@ -115,5 +93,18 @@
   </a>
 </footer>
 
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const categoria = params.get("categoria");
+
+    if(categoria) {
+        document.querySelectorAll('.producto').forEach(producto => {
+            if(producto.dataset.categoria !== categoria) {
+                producto.style.display = 'none';
+            }
+        });
+    }
+</script>
 </body>
 </html>
