@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tu Canasta</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+
+<div id="header"></div>
+    <script>
+        fetch("header.html")
+            .then(res => res.text())
+            .then(data => {
+             document.getElementById("header").innerHTML = data;
+            });
+    </script>
+
+
+<body>
+    
+
+
+
+    <div class="canasta">
+        <h1>TU CANASTA</h1>
+
+        <div class="producto">
+            <img src="short.png" alt="Short THRWLINE">
+            <div class="info">
+                <h2>THRWLINE</h2>
+                <p>Short de fitness basquetbol de hombre</p>
+                <p>Talla #G</p>
+                <p>Cantidad: 
+                    <input type="text" value="1" class="cantidad" oninput="this.value = this.value.replace(/[^0-9]/g,'')">
+                </p>
+                <p>Llega el jueves 25 de sep.</p>
+            </div>
+            <div class="resumen">
+                <p>Subtotal: $300.00</p>
+                <p>Gastos de envío: $100.00</p>
+                <p class="total">Total: $400.00</p>
+                <button>PAGAR</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
