@@ -261,7 +261,8 @@ h1{
     transform: scale(1.2);
 }
 
-.footer {
+
+footer {
   background-color: #111;
   color: white;
   display: flex;
@@ -276,6 +277,7 @@ h1{
   font-family: 'Poppins', sans-serif;
 }
 
+
 .footer a {
   color: white;
   text-decoration: none;
@@ -285,6 +287,8 @@ h1{
   justify-content: center;
   padding: 8px 12px;
   border-radius: 6px;
+
+  cursor: pointer; 
 }
 
 .footer a:hover {
@@ -292,7 +296,6 @@ h1{
   background-color: rgba(255, 255, 255, 0.05);
   transform: translateY(-2px);
 }
-
 
 .footer a[href*="wa.me"],
 .footer a[href*="mailto:"] {
@@ -308,7 +311,6 @@ h1{
   color: white;
 }
 
-
 .footer img {
   width: 40px;
   height: 40px;
@@ -320,11 +322,6 @@ h1{
 .footer img:hover {
   transform: scale(1.1);
 }
-
-
-
-
-
 
 
 
