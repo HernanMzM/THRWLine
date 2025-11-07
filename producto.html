@@ -1,69 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THRWLINE - Info_Productos</title>
-    <link rel="stylesheet" href="producto.css">
-</head>
-<body>
 
-    <div id="header"></div>
-    <script>
-        fetch("header.html")
-            .then(res => res.text())
-            .then(data => {
-             document.getElementById("header").innerHTML = data;
-            });
-    </script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>THRWLINE - Info_Productos</title>
+        <link rel="stylesheet" href="producto.css">
+    </head>
 
-    <main class="carrito">
-        <div class="producto-detalle">
-            <div class="imagenes-producto">
-            <img src="imagenes/prenda1.jpg" alt="Playera de basquetbol" class="imagen-principal">
-            <div class="miniaturas">
-                <img src="" alt="Miniatura" class="miniatura-principal">
-            </div>
+    <body>
 
-            </div>
+        
+        <div id="header"></div>
 
-            <div class="info-producto">
-            <h2>Short de Basquetbol THRWLINE</h2>
-            <p class="precio">$300.00 MXN</p>
+        <script>
+            fetch("header.html")
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById("header").innerHTML = data;
+                });
+        </script>
 
-            <div class="tallas">
-                <p>Talla</p>
-                <div class="opciones-talla">
-                    <button class="activa">S</button>
-                    <button>M</button>
-                    <button>L</button>
-                    <button>XL</button>
+       
+        <main class="carrito">
+
+            <div class="producto-detalle">
+
+                <div class="imagenes-producto">
+
+                    <img src="imagenes/prenda1.jpg" alt="Playera de basquetbol" class="imagen-principal">
+
+                    <div class="miniaturas">
+                        <img src="imagenes/prenda1.jpg" alt="Miniatura" class="miniatura-principal">
+                    </div>
+
                 </div>
-            </div>
 
-            <div class="cantidad">
-                <p>Cantidad</p>
-                <div class="botones-cantidad">
-                    <button>-</button>
-                    <span>1</span>
-                    <button>+</button>
+                
+                <div class="info-producto">
+
+                    <h2>Short de Basquetbol THRWLINE</h2>
+                    <p class="precio">$300.00 MXN</p>
+
+                    
+                    <div class="tallas">
+                        <p>Talla</p>
+
+                        <div class="opciones-talla">
+                            <button class="activa">S</button>
+                            <button>M</button>
+                            <button>L</button>
+                            <button>XL</button>
+                        </div>
+                    </div>
+
+                    
+                    <div class="cantidad">
+                        <p>Cantidad</p>
+
+                        <div class="botones-cantidad">
+                            <button>-</button>
+                            <span id="cantidad-producto">1</span>
+                            <button>+</button>
+                        </div>
+                    </div>
+
+                    <p class="stock">En existencia</p>
+
+                    
+                    <button class="btn-agregar">Agregar al carrito</button>
+                    <button class="btn-pagar">Pagar ahora</button>
+
+                   
+                    <div class="detalles-envio">
+                        <p><strong>Envío gratis</strong> en pedidos mayores a $500</p>
+                        <p>Entrega estimada: jueves 25 de septiembre</p>
+                    </div>
+
                 </div>
+
             </div>
 
-            <p class="stock">En existencia</p>
+        </main>
 
-            <button class="btn-agregar">Agregar al carrito</button>
-            <button class="btn-pagar">Pagar ahora</button>
-
-            <div class="detalles-envio">
-                <p><strong>Envío gratis</strong> en pedidos mayores a $500</p>
-                <p>Entrega estimada: jueves 25 de septiembre</p>
-            </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="footer">
+        
+        <footer class="footer">
        <a onclick="mostrarAlerta('En Thrwline, sabemos que tú eres lo más importante. Por eso, diseñamos nuestra tienda online pensando en ti')">Acerca de nosotros</a>
          <a onclick="mostrarAlerta('Términos de uso: Los datos personales de cada usuario serán protegidos mediante cookies')">Términos de uso</a>
        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thrwline@gmail.com&su=Consulta%20sobre%20THRWLINE&body=Hola%2C%20quisiera%20más%20información%20sobre%20sus%20servicios."
@@ -74,28 +95,116 @@
      <img src="imagenes/insta2.png" alt="Instagram THRWLINE">
    </a>
   </footer>
-  <script>
-    function mostrarAlerta(mensaje) {
-        alert(mensaje);
-    }
-</script>
 
-    <script>
-    const params = new URLSearchParams(window.location.search);
-    const nombre = params.get("nombre");
-    const precio = params.get("precio");
-    const imagen = params.get("imagen");
+       
+        <script>
+            function mostrarAlerta(mensaje) {
+                alert(mensaje);
+            }
+        </script>
 
-    if (nombre && precio && imagen) {
-        document.querySelector(".info-producto h2").textContent = nombre;
-        document.querySelector(".info-producto .precio").textContent = `$${precio}.00 MXN`;
-        document.querySelector(".imagen-principal").src = imagen;
-        document.querySelector(".imagen-principal").alt = nombre;
+        
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const nombre = params.get("nombre");
+            const precio = params.get("precio");
+            const imagen = params.get("imagen");
 
-        document.querySelector(".miniatura-principal").src = imagen;
-        document.querySelector(".miniatura-principal").alt = nombre;
+            if (nombre && precio && imagen) {
+                document.querySelector(".info-producto h2").textContent = nombre;
+                document.querySelector(".info-producto .precio").textContent = `$${precio}.00 MXN`;
+                document.querySelector(".imagen-principal").src = imagen;
+                document.querySelector(".miniatura-principal").src = imagen;
+            }
+        </script>
 
-    }
-</script>
-</body>
+       
+        <script>
+            const botonesTalla = document.querySelectorAll('.opciones-talla button');
+
+            botonesTalla.forEach(boton => {
+                boton.addEventListener('click', function () {
+                    document.querySelectorAll('.opciones-talla .activa')
+                        .forEach(btn => btn.classList.remove('activa'));
+                    this.classList.add('activa');
+                });
+            });
+        </script>
+
+        
+        <script>
+            const botonDisminuir = document.querySelector('.botones-cantidad button:first-child');
+            const botonAumentar = document.querySelector('.botones-cantidad button:last-child');
+            const spanCantidad = document.getElementById('cantidad-producto');
+
+            let cantidad = parseInt(spanCantidad.textContent);
+
+            function actualizarCantidad() {
+                spanCantidad.textContent = cantidad;
+            }
+
+            botonAumentar.addEventListener('click', () => {
+                if (cantidad < 99) {
+                    cantidad++;
+                    actualizarCantidad();
+                }
+            });
+
+            botonDisminuir.addEventListener('click', () => {
+                if (cantidad > 1) {
+                    cantidad--;
+                    actualizarCantidad();
+                }
+            });
+        </script>
+
+       
+        <script>
+            const btnAgregar = document.querySelector('.btn-agregar');
+            const btnPagar = document.querySelector('.btn-pagar');
+
+            function obtenerDetallesProducto() {
+                const tallaActiva = document.querySelector('.opciones-talla .activa');
+                const talla = tallaActiva ? tallaActiva.textContent : 'No seleccionada';
+                const cantidad = parseInt(document.getElementById('cantidad-producto').textContent);
+                const nombre = document.querySelector(".info-producto h2").textContent;
+                const precioTexto = document.querySelector(".info-producto .precio").textContent;
+                const precioNumerico = parseFloat(precioTexto.replace(/[^0-9.]/g, ''));
+                const imagenSrc = document.querySelector(".imagen-principal").src;
+
+                return { nombre, precio: precioNumerico, imagen: imagenSrc, talla, cantidad };
+            }
+
+            function agregarYRedirigir(redirigir) {
+                const producto = obtenerDetallesProducto();
+
+                if (producto.talla === 'No seleccionada') {
+                    alert('Por favor, selecciona una talla antes de continuar.');
+                    return;
+                }
+
+                let cesta = JSON.parse(localStorage.getItem('cestaProductos')) || [];
+                const indice = cesta.findIndex(item => item.nombre === producto.nombre && item.talla === producto.talla);
+
+                if (indice !== -1) {
+                    cesta[indice].cantidad += producto.cantidad;
+                } else {
+                    cesta.push(producto);
+                }
+
+                localStorage.setItem('cestaProductos', JSON.stringify(cesta));
+
+                if (redirigir) {
+                    window.location.href = 'THRWLine4.html';
+                } else {
+                    alert(`${producto.nombre} (${producto.talla}) x${producto.cantidad} agregado al carrito.`);
+                }
+            }
+
+            btnAgregar.addEventListener('click', () => agregarYRedirigir(true));
+            btnPagar.addEventListener('click', () => agregarYRedirigir(true));
+        </script>
+
+    </body>
 </html>
+]
