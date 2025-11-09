@@ -104,7 +104,7 @@
         </script>
 
         
-        <script>
+             <script>
             const params = new URLSearchParams(window.location.search);
             const nombre = params.get("nombre");
             const precio = params.get("precio");
@@ -116,95 +116,99 @@
                 document.querySelector(".imagen-principal").src = imagen;
                 document.querySelector(".miniatura-principal").src = imagen;
             }
-        </script>
+             </script>
 
        
-        <script>
-            const botonesTalla = document.querySelectorAll('.opciones-talla button');
+                   <script>
+                    const botonesTalla = document.querySelectorAll('.opciones-talla button');
 
-            botonesTalla.forEach(boton => {
-                boton.addEventListener('click', function () {
+                     botonesTalla.forEach(boton => {
+                      boton.addEventListener('click', function () {
                     document.querySelectorAll('.opciones-talla .activa')
                         .forEach(btn => btn.classList.remove('activa'));
                     this.classList.add('activa');
-                });
-            });
-        </script>
+                    });
+                  });
+                    </script>
 
         
-        <script>
-            const botonDisminuir = document.querySelector('.botones-cantidad button:first-child');
-            const botonAumentar = document.querySelector('.botones-cantidad button:last-child');
-            const spanCantidad = document.getElementById('cantidad-producto');
+                  <script>
+               const botonDisminuir = document.querySelector('.botones-cantidad button:first-child');
+              const botonAumentar = document.querySelector('.botones-cantidad button:last-child');
+              const spanCantidad = document.getElementById('cantidad-producto');
 
-            let cantidad = parseInt(spanCantidad.textContent);
+             let cantidad = parseInt(spanCantidad.textContent);
 
-            function actualizarCantidad() {
+             function actualizarCantidad() {
                 spanCantidad.textContent = cantidad;
-            }
+               }
 
-            botonAumentar.addEventListener('click', () => {
+               botonAumentar.addEventListener('click', () => {
                 if (cantidad < 99) {
                     cantidad++;
                     actualizarCantidad();
                 }
-            });
+                });
 
-            botonDisminuir.addEventListener('click', () => {
-                if (cantidad > 1) {
-                    cantidad--;
-                    actualizarCantidad();
-                }
-            });
+                botonDisminuir.addEventListener('click', () => {
+                  if (cantidad > 1) {
+                     cantidad--;
+                     actualizarCantidad();
+                  }
+               });
         </script>
 
        
-        <script>
-            const btnAgregar = document.querySelector('.btn-agregar');
-            const btnPagar = document.querySelector('.btn-pagar');
+       <script>
+         const btnAgregar = document.querySelector('.btn-agregar');
+          const btnPagar = document.querySelector('.btn-pagar');
 
-            function obtenerDetallesProducto() {
-                const tallaActiva = document.querySelector('.opciones-talla .activa');
-                const talla = tallaActiva ? tallaActiva.textContent : 'No seleccionada';
-                const cantidad = parseInt(document.getElementById('cantidad-producto').textContent);
-                const nombre = document.querySelector(".info-producto h2").textContent;
-                const precioTexto = document.querySelector(".info-producto .precio").textContent;
-                const precioNumerico = parseFloat(precioTexto.replace(/[^0-9.]/g, ''));
-                const imagenSrc = document.querySelector(".imagen-principal").src;
+           function obtenerDetallesProducto() {
+            const tallaActiva = document.querySelector('.opciones-talla .activa');
+             const talla = tallaActiva ? tallaActiva.textContent : 'No seleccionada';
+              const cantidad = parseInt(document.getElementById('cantidad-producto').textContent);
+              const nombre = document.querySelector(".info-producto h2").textContent;
+            const precioTexto = document.querySelector(".info-producto .precio").textContent;
+            const precioNumerico = parseFloat(precioTexto.replace(/[^0-9.]/g, ''));
+            const imagenSrc = document.querySelector(".imagen-principal").src;
 
-                return { nombre, precio: precioNumerico, imagen: imagenSrc, talla, cantidad };
-            }
+          return { nombre, precio: precioNumerico, imagen: imagenSrc, talla, cantidad };
+       }
 
-            function agregarYRedirigir(redirigir) {
-                const producto = obtenerDetallesProducto();
+         function agregarYRedirigir(redirigir) {
+        const producto = obtenerDetallesProducto();
 
-                if (producto.talla === 'No seleccionada') {
-                    alert('Por favor, selecciona una talla antes de continuar.');
-                    return;
-                }
+        if (producto.talla === 'No seleccionada') {
+            alert('Por favor, selecciona una talla antes de continuar.');
+            return;
+        }
 
-                let cesta = JSON.parse(localStorage.getItem('cestaProductos')) || [];
-                const indice = cesta.findIndex(item => item.nombre === producto.nombre && item.talla === producto.talla);
+        let cesta = JSON.parse(localStorage.getItem('cestaProductos')) || [];
+        const indice = cesta.findIndex(item => item.nombre === producto.nombre && item.talla === producto.talla);
 
-                if (indice !== -1) {
-                    cesta[indice].cantidad += producto.cantidad;
-                } else {
-                    cesta.push(producto);
-                }
+        if (indice !== -1) {
+            cesta[indice].cantidad += producto.cantidad;
+        } else {
+            cesta.push(producto);
+        }
 
-                localStorage.setItem('cestaProductos', JSON.stringify(cesta));
+        localStorage.setItem('cestaProductos', JSON.stringify(cesta));
 
-                if (redirigir) {
-                    window.location.href = 'THRWLine4.html';
-                } else {
-                    alert(`${producto.nombre} (${producto.talla}) x${producto.cantidad} agregado al carrito.`);
-                }
-            }
+        if (redirigir) {
+            
+            window.location.href = 'THRWLine4.html';
+        } else {
+            
+            alert(`El producto "${producto.nombre} (${producto.talla})" fue agregado a la cesta.`);
+        }
+    }
 
-            btnAgregar.addEventListener('click', () => agregarYRedirigir(true));
-            btnPagar.addEventListener('click', () => agregarYRedirigir(true));
-        </script>
+    
+    btnAgregar.addEventListener('click', () => agregarYRedirigir(false)); 
+    
+    
+    btnPagar.addEventListener('click', () => agregarYRedirigir(true));
+</script>
 
     </body>
 </html>
-]
