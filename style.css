@@ -170,7 +170,11 @@ label[for="menu"] .logo-2 {
 
 h2{
     position: center;
+<<<<<<< HEAD
     font-family: 'Bebas Neue', sans-serif;
+=======
+    font-family:  sans-serif;
+>>>>>>> b6213c9 (.)
     font-size: 44px;
     font-weight: 700;
     margin-top: 30px;
