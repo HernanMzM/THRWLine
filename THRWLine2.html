@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THRWLINE - Productos</title>
     <link rel="stylesheet" href="style2.css">
-     <script src="https://kit.fontawesome.com/b408879b64.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b408879b64.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -14,33 +15,31 @@
         fetch("header.html")
             .then(res => res.text())
             .then(data => {
-             document.getElementById("header").innerHTML = data;
+                document.getElementById("header").innerHTML = data;
             });
     </script>
     
-
     <aside class="sidebar">
-        <ul>
-            <li><a href="#">Playeras</a></li>
-            <li><a href="#">Sudaderas</a></li>
-            <li><a href="#">Chamarras</a></li>
-            <li><a href="#">Pans</a></li>
-            <li><a href="#">Shorts</a></li>
-            <li><a href="#">Conjuntos</a></li>
-        </ul>
-    </aside>
+    <ul>
+        <li><a href="THRWLine2.html?categoria=Playera">Playeras</a></li>
+        <li><a href="THRWLine2.html?categoria=Sudadera">Sudaderas</a></li>
+        <li><a href="THRWLine2.html?categoria=Chamarra">Chamarras</a></li>
+        <li><a href="THRWLine2.html?categoria=Short">Shorts</a></li>
+        <li><a href="THRWLine2.html?categoria=Top">Tops</a></li>
+        <li><a href="THRWLine2.html">Ver Todo</a></li>
+        
+    </ul>
+</aside>
 
     <main class="productos-grid">
-
-
-        <div class="producto" data-categoria="Hombre">
+        <div class="producto" data-categoria="Hombre" data-tipo="Playeras">
             <a href="producto.html?nombre=Playera%20basquetbol%20basica&precio=300&imagen=imagenes/prenda1.jpg">
                 <img src="imagenes/prenda1.jpg" alt="Playera basquetbol basica">
                 <p class="nombre">Playera de basquetbol basica</p>
                 <p class="precio">$300</p>
             </a>
         </div>
-        <div class="producto" data-categoria="Hombre">
+        <div class="producto" data-categoria="Hombre" data-tipo="Short">
             <a href="producto.html?nombre=Short%20basico&precio=300&imagen=imagenes/prenda2.jpg">
                 <img src="imagenes/prenda2.jpg" alt="Short basico">
                 <p class="nombre">Short basico</p>
@@ -48,7 +47,7 @@
             </a>
         </div>
 
-        <div class="producto" data-categoria="Hombre">
+        <div class="producto" data-categoria="Hombre" data-tipo="Playera">
             <a href="producto.html?nombre=Playera%20basica&precio=150&imagen=imagenes/playera1.jpg">
                 <img src="imagenes/playera1.jpg" alt="Playera basica">
                 <p class="nombre">Playera basica</p>
@@ -56,7 +55,7 @@
             </a>
         </div>
 
-        <div class="producto" data-categoria="Hombre">
+        <div class="producto" data-categoria="Hombre" data-tipo="Sudadera">
             <a href="producto.html?nombre=Sudadera%20basica&precio=300&imagen=imagenes/sudadera1.jpg">
                 <img src="imagenes/sudadera1.jpg" alt="Sudadera basica">
                 <p class="nombre">Sudadera basica</p>
@@ -64,7 +63,7 @@
             </a>
         </div>
 
-        <div class="producto" data-categoria="Hombre">
+        <div class="producto" data-categoria="Hombre" data-tipo="Sudadera">
             <a href="producto.html?nombre=Sudadera%20premium&precio=350&imagen=imagenes/sudadera2.jpg">
                 <img src="imagenes/sudadera2.jpg" alt="Sudadera premium">
                 <p class="nombre">Sudadera premium</p>
@@ -72,119 +71,141 @@
             </a>
         </div>
 
-        <div class="producto" data-categoria="Mujer">
+        <div class="producto" data-categoria="Mujer" data-tipo="Sudadera">
             <a href="producto.html?nombre=Sudadera%20basica%20Mujer&precio=300&imagen=imagenes/msudadera1.jpg">
                 <img src="imagenes/msudadera1.jpg" alt="Sudadera basica mujer">
                 <p class="nombre">Sudadera basica Mujer</p>
                 <p class="precio">$300</p>
             </a>
         </div>
-         <div class="producto" data-categoria="Hombre">
+        <div class="producto" data-categoria="Hombre" data-tipo="Playera">
             <a href="producto.html?nombre=camisa%20basica&precio=350&imagen=imagenes/producto1.jpg">
                 <img src="imagenes/producto1.jpg" alt="camisa basica">
-                <p class="nombre">camisa basica</p>
+                <p class="nombre">Playera basica</p>
                 <p class="precio">$350</p>
             </a>
         </div>
-         <div class="producto" data-categoria="Mujer">
+        <div class="producto" data-categoria="Mujer" data-tipo="Top">
             <a href="producto.html?nombre=top%20basico%20Mujer&precio=300&imagen=imagenes/top1.jpg">
                 <img src="imagenes/top1.jpg" alt="Top basico Mujer">
                 <p class="nombre">top basico Mujer</p>
                 <p class="precio">$300</p>
             </a>
         </div>
-        <div class="producto" data-categoria="Hombre">
+        <div class="producto" data-categoria="Hombre" data-tipo="Sudadera">
             <a href="producto.html?nombre=Sudadera%20basica&precio=350&imagen=imagenes/producto2.jpg">
                 <img src="imagenes/producto2.jpg" alt="Sudadera basica">
                 <p class="nombre">Sudadera basica</p>
                 <p class="precio">$350</p>
             </a>
         </div>
-        <div class="producto" data-categoria="Hombre">
+        <div class="producto" data-categoria="Hombre" data-tipo="Chamarra">
             <a href="producto.html?nombre=Chamarra rompe %20Vientos&precio=350&imagen=imagenes/producto3.jpg">
                 <img src="imagenes/producto3.jpg" alt="Chamarra rompe vientos">
                 <p class="nombre">Chamarra rompe vientos</p>
                 <p class="precio">$350</p>
             </a>
         </div>
-        <div class="producto" data-categoria="Mujer">
+        <div class="producto" data-categoria="Mujer" data-tipo="Chamarra">
             <a href="producto.html?nombre=Chamarra%20Mujer&precio=300&imagen=imagenes/producto4.jpg">
                 <img src="imagenes/producto4.jpg" alt="Chamarra Mujer">
                 <p class="nombre">chamarra Mujer</p>
                 <p class="precio">$300</p>
             </a>
         </div>
-         <div class="producto" data-categoria="Hombre">
+        <div class="producto" data-categoria="Hombre" data-tipo="Playera">
             <a href="producto.html?nombre=Playera sin %20mangas&precio=350&imagen=imagenes/producto5.jpg">
                 <img src="imagenes/producto5.jpg" alt="Playera sin mangas">
                 <p class="nombre">Playera sin mangas </p>
                 <p class="precio">$350</p>
             </a>
         </div>
-        <div class="producto" data-categoria="Mujer">
+        <div class="producto" data-categoria="Mujer" data-tipo="Top">
             <a href="producto.html?nombre=Top%20Mujer&precio=300&imagen=imagenes/producto6.jpg">
                 <img src="imagenes/producto6.jpg" alt="Top mujer">
                 <p class="nombre">Top mujer</p>
                 <p class="precio">$300</p>
             </a>
         </div>
-        <div class="producto" data-categoria="Hombre">
+        <div class="producto" data-categoria="Hombre" data-tipo="Playera">
             <a href="producto.html?nombre=Playera&precio=350&imagen=imagenes/producto7.jpg">
                 <img src="imagenes/producto7.jpg" alt="Playera">
                 <p class="nombre">Playera </p>
                 <p class="precio">$350</p>
             </a>
         </div>
-        <div class="producto" data-categoria="Mujer">
+        <div class="producto" data-categoria="Mujer" data-tipo="Chamarra">
             <a href="producto.html?nombre=Chamarra%20Mujer&precio=300&imagen=imagenes/producto8.jpg">
                 <img src="imagenes/producto8.jpg" alt="Chamarra">
                 <p class="nombre">Chamarra</p>
                 <p class="precio">$300</p>
             </a>
         </div>
-        <div class="producto" data-categoria="Mujer">
+        <div class="producto" data-categoria="Mujer" data-tipo="Sudadera">
             <a href="producto.html?nombre=Sudadera%20Mujer&precio=300&imagen=imagenes/producto9.jpg">
                 <img src="imagenes/producto9.jpg" alt="Sudadera">
                 <p class="nombre">Sudadera</p>
                 <p class="precio">$300</p>
             </a>
         </div>
+    </main>
 
+    <footer class="footer">
+        <a onclick="mostrarAlerta('En Thrwline, sabemos que tú eres lo más importante. Por eso, diseñamos nuestra tienda online pensando en ti')">Acerca de nosotros</a>
+        <a onclick="mostrarAlerta('Términos de uso: Los datos personales de cada usuario serán protegidos mediante cookies')">Términos de uso</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thrwline@gmail.com&su=Consulta%20sobre%20THRWLINE&body=Hola%2C%20quisiera%20más%20información%20sobre%20sus%20servicios."
+        target="_blank" title="Enviar correo por Gmail">Contacto</a>
+        <a href="https://wa.me/522462431474?text=Hola%2C%20quiero%20más%20información%20sobre%20THRWLINE"
+        target="_blank" title="Enviar mensaje por WhatsApp">WhatsApp: +52 246 243 1474</a>
+        <a href="https://www.instagram.com/trhwline?igsh=MXFtMzZtZWl3a3N6bg==" target="_blank">
+        <img src="imagenes/insta2.png" alt="Instagram THRWLINE">
+        </a>
+    </footer>
 
+    <script>
+        function mostrarAlerta(mensaje) {
+            alert(mensaje);
+        }
         
+        
+        
+        const params = new URLSearchParams(window.location.search);
+        let filtroUrl = params.get("categoria"); 
+
+        if (filtroUrl) {
+          
+            const filtroNormalizado = filtroUrl.toLowerCase().replace(/s$/, '');
+
+            document.querySelectorAll('.producto').forEach(producto => {
+                
+                const categoriaProducto = producto.dataset.categoria ? producto.dataset.categoria.toLowerCase() : '';
+                
+                
+                const tipoProducto = producto.dataset.tipo ? producto.dataset.tipo.toLowerCase() : '';
+
+                
+                const nombreElemento = producto.querySelector('.nombre');
+                const nombreProducto = nombreElemento ? nombreElemento.textContent.toLowerCase() : '';
+
+                
+               
+                const coincideCategoria = (filtroNormalizado === categoriaProducto);
+                
+                
+                const coincideTipoExacto = (filtroNormalizado === tipoProducto);
+                
+                
+                const coincideNombre = nombreProducto.includes(filtroNormalizado);
 
 
-</main>
-
-   <footer class="footer">
-       <a onclick="mostrarAlerta('En Thrwline, sabemos que tú eres lo más importante. Por eso, diseñamos nuestra tienda online pensando en ti')">Acerca de nosotros</a>
-         <a onclick="mostrarAlerta('Términos de uso: Los datos personales de cada usuario serán protegidos mediante cookies')">Términos de uso</a>
-       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thrwline@gmail.com&su=Consulta%20sobre%20THRWLINE&body=Hola%2C%20quisiera%20más%20información%20sobre%20sus%20servicios."
-    target="_blank" title="Enviar correo por Gmail">Contacto</a>
-     <a href="https://wa.me/522462431474?text=Hola%2C%20quiero%20más%20información%20sobre%20THRWLINE"
-    target="_blank" title="Enviar mensaje por WhatsApp">WhatsApp: +52 246 243 1474</a>
-    <a href="https://www.instagram.com/trhwline?igsh=MXFtMzZtZWl3a3N6bg==" target="_blank">
-     <img src="imagenes/insta2.png" alt="Instagram THRWLINE">
-   </a>
-  </footer>
-
-
-<script>
-    const params = new URLSearchParams(window.location.search);
-    const categoria = params.get("categoria");
-
-    if(categoria) {
-        document.querySelectorAll('.producto').forEach(producto => {
-            if(producto.dataset.categoria !== categoria) {
-                producto.style.display = 'none';
-            }
-        });
-    }
-</script>
-<script>
-    function mostrarAlerta(mensaje) {
-        alert(mensaje);
-    }
-</script>
+                
+                if (coincideCategoria || coincideTipoExacto || coincideNombre) {
+                    producto.style.display = ''; 
+                } else {
+                    producto.style.display = 'none'; 
+                }
+            });
+        }
+    </script>
 </body>
 </html>
