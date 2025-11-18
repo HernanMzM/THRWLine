@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta charset="UTF-8">
   <title>Tu Canasta</title>
   <link rel="stylesheet" href="style4.css">
 </head>
 <body>
 
-  <div id="header"></div>
-  <script>
-    fetch("header.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("header").innerHTML = data;
-      });
-  </script>
+    
+    <div class="header-contenedor">
+            <div id="header"></div>
+        <script>
+            fetch("header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+        </script>
+    </div>
+
 
   
    <div class="canasta">

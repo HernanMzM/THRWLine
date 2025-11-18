@@ -6,20 +6,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>THRWLINE - Info_Productos</title>
         <link rel="stylesheet" href="producto.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
 
     <body>
 
         
-        <div id="header"></div>
+        <header>
+        <div class="menu container">
+            <img class="logo-1" src="imagenes/logo 1.png" alt="">
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+            <img class="logo-2" src="imagenes/menu.png" alt="">
+            </label>
+            <a href="index.html">
+            <img class="logo-2" src="imagenes/logo 2.png" alt="">
+            </a>
+            <nav class="navbar">
+                <div class="menu-1">
+                    <ul>
+                        <li><a href="THRWLine2.html">Lo mas nuevo</a></li>
+                        <li><a href="#">Ofertas</a></li>
+                        <li><a href="THRWLine2.html?categoria=Hombre">Hombre</a></li>
+                        <li><a href="THRWLine2.html?categoria=Mujer">Mujer</a></li>
 
-        <script>
-            fetch("header.html")
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById("header").innerHTML = data;
-                });
-        </script>
+                    </ul>
+                </div>
+                    <div class="buscador container">
+                        <input type="text" placeholder="Buscar...">
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+            
+                <div class="menu-2">
+                    <div class="Redirecciones">
+                    <a href="THRWLine3.html">
+                        <img src="imagenes/inciarsesion.png" alt="">
+                    </a>
+                    <a href="THRWLine4.html">
+                     <img src="imagenes/bas.png" alt="">
+                    </a>
+                    </div>
+                </div>
+
+            </nav>
+            </div>
+    </header>
 
        
         <main class="carrito">
