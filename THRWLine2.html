@@ -50,18 +50,28 @@
             </nav>
             </div>
     </header>
+    <script>
+        document.getElementById("searchBtn").addEventListener("click", () => {
+            const texto = document.getElementById("searchInput").value.trim();
+
+            if (texto !== "") {
+                window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
+            }
+        });
+    </script>
+
     
     <aside class="sidebar">
-    <ul>
-        <li><a href="THRWLine2.html?categoria=Playera">Playeras</a></li>
-        <li><a href="THRWLine2.html?categoria=Sudadera">Sudaderas</a></li>
-        <li><a href="THRWLine2.html?categoria=Chamarra">Chamarras</a></li>
-        <li><a href="THRWLine2.html?categoria=Short">Shorts</a></li>
-        <li><a href="THRWLine2.html?categoria=Top">Tops</a></li>
-        <li><a href="THRWLine2.html">Ver Todo</a></li>
-        
-    </ul>
-</aside>
+        <ul>
+            <li><a href="THRWLine2.html?categoria=Playera">Playeras</a></li>
+            <li><a href="THRWLine2.html?categoria=Sudadera">Sudaderas</a></li>
+            <li><a href="THRWLine2.html?categoria=Chamarra">Chamarras</a></li>
+            <li><a href="THRWLine2.html?categoria=Short">Shorts</a></li>
+            <li><a href="THRWLine2.html?categoria=Top">Tops</a></li>
+            <li><a href="THRWLine2.html">Ver Todo</a></li>
+            
+        </ul>       
+    </aside>
 
     <main class="productos-grid">
         <div class="producto" data-categoria="Hombre" data-tipo="Playeras">
@@ -195,49 +205,51 @@
     </footer>
 
     <script>
-        function mostrarAlerta(mensaje) {
-            alert(mensaje);
-        }
-        
-        
-        
-        const params = new URLSearchParams(window.location.search);
-        let filtroUrl = params.get("categoria"); 
+    const params = new URLSearchParams(window.location.search);
+    let filtroUrl = params.get("categoria"); 
 
-        if (filtroUrl) {
-          
-            const filtroNormalizado = filtroUrl.toLowerCase().replace(/s$/, '');
+    if (filtroUrl) {
 
-            document.querySelectorAll('.producto').forEach(producto => {
-                
-                const categoriaProducto = producto.dataset.categoria ? producto.dataset.categoria.toLowerCase() : '';
-                
-                
-                const tipoProducto = producto.dataset.tipo ? producto.dataset.tipo.toLowerCase() : '';
+        const filtroNormalizado = filtroUrl.toLowerCase().replace(/s$/, '');
 
-                
-                const nombreElemento = producto.querySelector('.nombre');
-                const nombreProducto = nombreElemento ? nombreElemento.textContent.toLowerCase() : '';
+        document.querySelectorAll('.producto').forEach(producto => {
 
-                
-               
-                const coincideCategoria = (filtroNormalizado === categoriaProducto);
-                
-                
-                const coincideTipoExacto = (filtroNormalizado === tipoProducto);
-                
-                
-                const coincideNombre = nombreProducto.includes(filtroNormalizado);
+            const categoriaProducto = producto.dataset.categoria ? producto.dataset.categoria.toLowerCase() : '';
+            const tipoProducto = producto.dataset.tipo ? producto.dataset.tipo.toLowerCase() : '';
+            const nombreElemento = producto.querySelector('.nombre');
+            const nombreProducto = nombreElemento ? nombreElemento.textContent.toLowerCase() : '';
 
+            const coincideCategoria = (filtroNormalizado === categoriaProducto);
+            const coincideTipoExacto = (filtroNormalizado === tipoProducto);
+            const coincideNombre = nombreProducto.includes(filtroNormalizado);
 
-                
-                if (coincideCategoria || coincideTipoExacto || coincideNombre) {
-                    producto.style.display = ''; 
-                } else {
-                    producto.style.display = 'none'; 
-                }
-            });
-        }
-    </script>
+            if (coincideCategoria || coincideTipoExacto || coincideNombre) {
+                producto.style.display = '';
+            } else {
+                producto.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+<script>
+    const parametros = new URLSearchParams(window.location.search);
+    let textoBusqueda = parametros.get("q");  // ← CAMBIADO
+
+    if (textoBusqueda) {
+        const textoNormal = textoBusqueda.toLowerCase().trim();
+
+        document.querySelectorAll('.producto').forEach(producto => {
+            const nombre = producto.querySelector('.nombre').textContent.toLowerCase();
+
+            if (nombre.includes(textoNormal)) {
+                producto.style.display = "";
+            } else {
+                producto.style.display = "none";
+            }
+        });
+    }
+</script>
+
 </body>
 </html>

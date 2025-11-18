@@ -35,9 +35,10 @@
                     </ul>
                 </div>
                     <div class="buscador container">
-                        <input type="text" placeholder="Buscar...">
-                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="text" id="searchInput" placeholder="Buscar...">
+                        <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
+
             
                 <div class="menu-2">
                     <div class="Redirecciones">
@@ -53,8 +54,17 @@
             </nav>
             </div>
     </header>
+    <script>
+        document.getElementById("searchBtn").addEventListener("click", () => {
+            const texto = document.getElementById("searchInput").value.trim();
 
-    
+            if (texto !== "") {
+                // Redirige a la pagina donde se muestran los productos
+                window.location.href = "THRWLine2.html?q=" + encodeURIComponent(texto);
+            }
+        });
+    </script>
+
             <div class="Portada">
             <img src="imagenes/fondon.jpg">
             <h2>Lleva tu estilo a las canchas como ellos...</h2>
