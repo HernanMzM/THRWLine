@@ -32,8 +32,8 @@
                     </ul>
                 </div>
                     <div class="buscador container">
-                        <input type="text" placeholder="Buscar...">
-                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="text" id="searchInput" placeholder="Buscar...">
+                        <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
             
                 <div class="menu-2">
@@ -56,6 +56,12 @@
 
             if (texto !== "") {
                 window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
+
+            }
+        });
+        document.getElementById("searchInput").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                document.getElementById("searchBtn").click();
             }
         });
     </script>
@@ -349,11 +355,18 @@
 
             // Normalizar texto (acentos, plural, espacios)
             function normalizar(texto) {
-                return texto
+                let t = texto
                     .toLowerCase()
                     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-                    .replace(/s$/, "")
                     .trim();
+
+                // quitar plurales comunes
+                t = t.replace(/(os|as|es)$/, "");
+
+                // quitar vocal final para unificar genero y variantes
+                t = t.replace(/[aeiou]$/, "");
+
+                return t;
             }
 
             // ---------------- SINONIMOS ----------------

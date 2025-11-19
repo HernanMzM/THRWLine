@@ -54,5 +54,19 @@
         </nav>
     </div>
 </header>
+<script>
+        document.getElementById("searchBtn").addEventListener("click", () => {
+            const texto = document.getElementById("searchInput").value.trim();
 
+            if (texto !== "") {
+                window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
+
+            }
+        });
+        document.getElementById("searchInput").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                document.getElementById("searchBtn").click();
+            }
+        });
+    </script>
 </div>
