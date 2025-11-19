@@ -1,3 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap');
+
+* {
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    
+    font-family: sans-serif; 
+    background-color: #fff;
+    color: #000;
+}
 header {
     background-color: #1a1a1a; 
     padding: 20px 0;
@@ -16,7 +35,18 @@ header {
     align-items: center;
     position: relative;
 }
+.input{
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    border:0;
+    outline: none;
 
+}
+button{
+    background-color: #fff;
+     width:20px;
+    height: 20px;
+}
 .logo-1, .logo-2 {
     max-width: 100px; 
     height: auto;
@@ -25,6 +55,7 @@ header {
 .logo-1 {
     display: none; 
 }
+
 
 .navbar {
     display: flex;
@@ -42,6 +73,7 @@ header {
     color: #fff;
     text-transform: uppercase;
     transition: color 0.3s;
+    
 }
 
 .navbar ul li a:hover {
@@ -49,54 +81,70 @@ header {
     border-bottom: 4px solid #fff;
 }
 
+
 .menu-1 {
-    margin-right: 20px;
+    margin-right: 20px; 
 }
-
-.buscador input {
-    padding: 10px;
-    border-radius: 5px 0 0 5px;
-    border: none;
-    outline: none;
-}
-
-.buscador button {
-    background-color: #fff;
-    width: 20px;
-    height: 20px;
-    border: none;
-    cursor: pointer;
-}
-
 .Redirecciones {
     display: flex;
     align-items: center;
     margin-left: 20px;
 }
 
+
+
 .Redirecciones a {
     display: block;
     width: 50px;
     height: 50px;
-    margin-right: 15px;
-    transition: all 0.3s;
-    cursor: pointer;
+    margin-right: 15px; 
+    transition: all 0.3s; 
+    cursor: pointer; 
 }
 
-.Redirecciones img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s;
-}
 
 .Redirecciones a:hover {
+    
+    color: #ff7b00; 
+    background-color: rgba(255, 255, 255, 0.05);
+    
+  
     transform: translateY(-2px);
 }
 
+
+.Redirecciones a:active {
+    transform: translate(1px, 1px);
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+.Redirecciones a:last-child{
+    margin-right: 0;
+}
+
+.Redirecciones img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; 
+    transition: transform 0.3s;
+}
+
 .Redirecciones img:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); 
+}
+
+.Portada {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.Portada img{
+    width: 100%;
+    height: auto; 
+    display: block;
+   object-fit: unset; 
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
 }
 
 #menu {
@@ -105,41 +153,115 @@ header {
 
 label[for="menu"] {
     cursor: pointer;
-    order: 2;
+    order: 2; 
 }
+
 
 label[for="menu"] .logo-2 {
     display: none;
     width: 30px;
     height: 30px;
+  
 }
 
-/* Version movil */
+
+footer {
+  background-color: #111;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 30px; 
+  padding: 25px 15px;
+  margin-top: 40px;
+  font-size: 14px;
+  align-items: center;
+  flex-wrap: wrap; 
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+
+  cursor: pointer; 
+}
+
+.footer a:hover {
+  color: #ff7b00; 
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.footer a[href*="wa.me"],
+.footer a[href*="mailto:"] {
+  background-color: #25D366;
+  color: white;
+  font-weight: 500;
+  padding: 8px 14px;
+}
+
+.footer a[href*="wa.me"]:hover,
+.footer a[href*="mailto:"]:hover {
+  background-color: #1ebe57;
+  color: white;
+}
+
+.footer img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.footer img:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+
 @media (max-width: 991px) {
+    
+    .menu {
+        padding: 0 10px;
+    }
 
     label[for="menu"] .logo-2 {
         display: block;
     }
-
+    
+    
     .logo-1 {
-        order: 1;
+        order: 1; 
         max-width: 80px;
     }
 
+    
     .navbar {
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        background-color: #000;
+        background-color: #000; 
         border-top: 1px solid #333;
         width: 100%;
-        height: 0;
+        height: 0; 
         overflow: hidden;
         transition: all 0.5s ease;
         display: block;
         z-index: 100;
     }
+
 
     #menu:checked ~ .navbar {
         height: auto;
@@ -147,7 +269,7 @@ label[for="menu"] .logo-2 {
     }
 
     .navbar ul {
-        flex-direction: column;
+        flex-direction: column; 
         text-align: center;
         padding: 10px 0;
     }
@@ -156,6 +278,24 @@ label[for="menu"] .logo-2 {
         display: block;
         padding: 15px 0;
         border-bottom: 1px solid #333;
+    }
+    
+    .navbar ul li:last-child a {
+        border-bottom: none;
+    }
+
+    
+    .menu-2 {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+    
+    .menu-2 ul {
+        padding-top: 10px;
+    }
+
+    .menu-2 ul li:last-child {
+        margin-left: 0; 
     }
 
     .Redirecciones {
