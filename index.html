@@ -59,8 +59,13 @@
             const texto = document.getElementById("searchInput").value.trim();
 
             if (texto !== "") {
-                // Redirige a la pagina donde se muestran los productos
-                window.location.href = "THRWLine2.html?q=" + encodeURIComponent(texto);
+                window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
+
+            }
+        });
+        document.getElementById("searchInput").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                document.getElementById("searchBtn").click();
             }
         });
     </script>
