@@ -164,31 +164,74 @@ label[for="menu"] .logo-2 {
   
 }
 
-h2{
-    position: center;
-
-    font-family:  sans-serif;
-
+h1, h2 {
+    position: relative;
+    font-family: sans-serif;
+    color: #fff;
+    text-align: center;
+    width: fit-content;
+    margin: 40px auto;
+    padding: 0 20px; 
+    background: #ffffff;
+    z-index: 2;
+}
+h2 {
     font-size: 44px;
     font-weight: 700;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding-bottom: 12px;
-    border-bottom: 4px solid #ff4500;
+    padding-bottom: 10px;
+}
+h1::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100vw;
+    height: 60px;     
+    background-color: #000;
+    z-index: -1;
+}
+h2::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100vw;
+    height: 100px;     
+    background-color: #000;
+    z-index: -1;
+}
+.subtexto {
+    position: relative;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #000;
     width: fit-content;
+    margin: 30px auto;
+    padding-top: 12px; 
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    color: #1a1a1a;
 }
-h1{
-    position: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+
+
+.subtexto::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+    max-width: 600px;  
+    height: 4px;
+    background-color: #ff4500;
 }
+
+
+
 .header-content.container { 
     padding: 50px 15px 80px 15px;
     overflow: hidden; 

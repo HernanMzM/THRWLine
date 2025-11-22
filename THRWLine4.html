@@ -77,21 +77,70 @@
     const listaProductos = document.getElementById("lista-productos");
     const resumenFinal = document.getElementById("resumen-final");
 
+    
+
+    function eliminarProducto(index) {
+        let carrito = JSON.parse(localStorage.getItem('cestaProductos')) || [];
+        
+        if (index > -1 && index < carrito.length) {
+           
+            if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
+                carrito.splice(index, 1);
+                localStorage.setItem('cestaProductos', JSON.stringify(carrito));
+                alert("Producto eliminado de la canasta.");
+               
+                mostrarCanasta(); 
+            }
+        }
+    }
+    
+   
+    function actualizarCantidad(index, inputElement) {
+        let carrito = JSON.parse(localStorage.getItem('cestaProductos')) || [];
+        
+        const nuevaCantidad = parseInt(inputElement.value.replace(/[^0-9]/g, '')) || 1; 
+
+        if (index > -1 && index < carrito.length) {
+            carrito[index].cantidad = nuevaCantidad;
+            localStorage.setItem('cestaProductos', JSON.stringify(carrito));
+            
+            mostrarCanasta(); 
+        }
+    }
+    
+    function vaciarCanasta() {
+        if (confirm("¿Estás seguro de que deseas vaciar toda la canasta?")) {
+            localStorage.removeItem('cestaProductos');
+            mostrarCanasta();
+            alert("Canasta vaciada correctamente.");
+        }
+    }
+
+    function pagarAhora() {
+        
+        alert("Redirigiendo a la página de pago...");
+        window.location.href = "THRWLine3.html";
+    }
+
+   
     function mostrarCanasta() {
         const carrito = JSON.parse(localStorage.getItem('cestaProductos')) || [];
         listaProductos.innerHTML = "";
         resumenFinal.innerHTML = "";
 
         if (carrito.length === 0) {
-            listaProductos.innerHTML = "<p>Tu canasta está vacía.</p>";
+            listaProductos.innerHTML = "<p>Tu canasta está vacía. ¡Explora nuestros productos y agrega algo!</p>";
             return;
         }
 
         let totalGeneral = 0;
+        const COSTO_ENVIO = 100;
+        const UMBRAL_ENVIO_GRATIS = 500;
 
-        carrito.forEach(producto => {
+        carrito.forEach((producto, index) => {
             const subtotal = producto.precio * producto.cantidad;
-            const envio = subtotal >= 500 ? 0 : 100;
+            
+            const envio = subtotal >= UMBRAL_ENVIO_GRATIS ? 0 : COSTO_ENVIO;
             const total = subtotal + envio;
             totalGeneral += total;
 
@@ -105,7 +154,8 @@
                 <p>Cantidad: 
                     <input type="text" value="${producto.cantidad}" 
                     class="cantidad" 
-                    oninput="this.value = this.value.replace(/[^0-9]/g,'')">
+                    oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                    onchange="actualizarCantidad(${index}, this)">
                 </p>
                 <p>Llega el jueves 25 de septiembre</p>
             </div>
@@ -113,7 +163,12 @@
                 <p>Subtotal: $${subtotal.toFixed(2)}</p>
                 <p>Gastos de envío: $${envio.toFixed(2)}</p>
                 <p class="total">Total: $${total.toFixed(2)}</p>
-                <button_1 onclick="pagarAhora()">PAGAR</button_1>
+                
+                <button 
+                    onclick="eliminarProducto(${index})" 
+                    style="background-color: #000; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; margin-top: 10px;">
+                    ELIMINAR
+                </button>
             </div>
             `;
             listaProductos.appendChild(div);
@@ -124,25 +179,23 @@
             <hr>
             <h3 style="text-align:right;">Total general: $${totalGeneral.toFixed(2)} MXN</h3>
             <div style="text-align:right; display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
-                <button_1 onclick="pagarAhora()" style="font-weight: bold; background-color: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer;">PAGAR TODO</button_1>
-                <button_1 onclick="vaciarCanasta()">Vaciar Canasta</button_1>
+                <button 
+                    onclick="pagarAhora()" 
+                    style="font-weight: bold; background-color: #000; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">
+                    PAGAR TODO
+                </button>
+                
+                <button 
+                    onclick="vaciarCanasta()" 
+                    style="font-weight: bold; background-color: #f44336; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">
+                    Vaciar Canasta
+                </button>
             </div>
         `;
     }
 
-    function vaciarCanasta() {
-        localStorage.removeItem('cestaProductos');
-        mostrarCanasta();
-        alert("Canasta vaciada correctamente.");
-    }
-
-    function pagarAhora() {
-        alert("Redirigiendo al pago...");
-        window.location.href = "THRWLine3.html";
-    }
-
+    
     mostrarCanasta();
 </script>
-
 </body>
 </html>

@@ -59,13 +59,8 @@
             const texto = document.getElementById("searchInput").value.trim();
 
             if (texto !== "") {
-                window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
-
-            }
-        });
-        document.getElementById("searchInput").addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                document.getElementById("searchBtn").click();
+               
+                window.location.href = "THRWLine2.html?q=" + encodeURIComponent(texto);
             }
         });
     </script>
@@ -73,9 +68,9 @@
             <div class="Portada">
             <img src="imagenes/fondon.jpg">
             <h2>Lleva tu estilo a las canchas como ellos...</h2>
-            <h1> Nueva temporada. Nuevos colores. Nuevos modelos ahora
+            <p class="subtexto"> Nueva temporada. Nuevos colores. Nuevos modelos ahora
                          disponibles para seguir luciendo en la cancha.
-            </h1>
+            </p>
             </div>
             
               <div class="header-content container">
@@ -147,7 +142,7 @@
                     });
                   </script>  
 
-                    <h2>Comprar por icono</h2>
+                    <h1>Comprar por icono</h1>
         <main class="productos-grid">
                  <div class="producto" data-categoria="Mujer">
             <a href="producto.html?nombre=Sudadera%20basica%20Mujer&precio=300&imagen=imagenes/msudadera1.jpg">
