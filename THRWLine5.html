@@ -14,16 +14,16 @@
 
 <body>
 
-      <div class="header-area">
+    <div class="header-area">
         <header>
             <div class="menu container">
                 <img class="logo-1" src="imagenes/logo 1.png" alt="">
                 <input type="checkbox" id="menu" />
                 <label for="menu">
-                <img class="logo-2" src="imagenes/menu.png" alt="">
+                    <img class="logo-2" src="imagenes/menu.png" alt="">
                 </label>
                 <a href="index.html">
-                <img class="logo-2" src="imagenes/logo 2.png" alt="">
+                    <img class="logo-2" src="imagenes/logo 2.png" alt="">
                 </a>
                 <nav class="navbar">
                     <div class="menu-1">
@@ -32,45 +32,37 @@
                             <li><a href="#">Ofertas</a></li>
                             <li><a href="THRWLine2.html?categoria=Hombre">Hombre</a></li>
                             <li><a href="THRWLine2.html?categoria=Mujer">Mujer</a></li>
-
                         </ul>
                     </div>
-                        <div class="buscador container">
-                            <input type="text" id="searchInput" placeholder="Buscar...">
-                            <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
-
-                
+                    <div class="buscador container">
+                        <input type="text" id="searchInput" placeholder="Buscar...">
+                        <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
                     <div class="menu-2">
                         <div class="Redirecciones">
-                        <a href="THRWLine3.html">
-                            <img src="imagenes/inciarsesion.png" alt="">
-                        </a>
-                        <div class="carrito-icono">
-                        <a href="THRWLine4.html" class="carrito-icono">
-                            <img src="imagenes/bas.png" alt="">
-                            <span id="carrito-contador">0</span>
-                        </a>
-                        </div>
-
+                            <a href="THRWLine3.html">
+                                <img src="imagenes/inciarsesion.png" alt="">
+                            </a>
+                            <div class="carrito-icono">
+                                <a href="THRWLine4.html" class="carrito-icono">
+                                    <img src="imagenes/bas.png" alt="">
+                                    <span id="carrito-contador">0</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-
                 </nav>
-                </div>
+            </div>
         </header>
     </div>
 
-  <div class="canasta">
+    <div class="canasta">
         <h1>PROCESO DE PAGO</h1>
 
         <div id="productos-pago"></div>
 
-
-
         <div class="metodo_pago">
             <h3>Forma de pago</h3>
-
             <div class="opciones_pago">
                 <div class="opcion seleccionada"><img src="imagenes/tarjeta.png"> Tarjeta de crédito o débito</div>
                 <div class="opcion"><img src="imagenes/gpay.png"> Google Pay</div>
@@ -80,70 +72,107 @@
                 <div class="opcion"><img src="imagenes/paypal.png"> MSI disponibles</div>
             </div>
 
-            <div class="datos-pago"></div>
-        </div>
+            <div class="datos-pago">
+                <form id="formPago">
+                    <h3 id="titulo-pago">Datos de la tarjeta</h3>
+                    <label>
+                        Numero de tarjeta
+                        <input type="text" id="tarjeta" maxlength="16" placeholder="1234567890123456" required>
+                        <small class="error"></small>
+                    </label>
+                    <label>
+                        Nombre completo
+                        <input type="text" id="nombre" placeholder="Como aparece en la tarjeta" required>
+                        <small class="error"></small>
+                    </label>
+                    <div class="fila">
+                        <label>
+                            Expiracion (MM/AA)
+                            <input type="text" id="fecha" maxlength="5" placeholder="08/28" required>
+                            <small class="error"></small>
+                        </label>
+                        <label>
+                            CVV
+                            <input type="text" id="cvv" maxlength="3" placeholder="123" required>
+                            <small class="error"></small>
+                        </label>
+                    </div>
+                    <h3>Datos de envio</h3>
+                    <label>
+                        Direccion
+                        <input type="text" id="direccion" placeholder="Calle y numero" required>
+                        <small class="error"></small>
+                    </label>
+                    <label>
+                        Codigo Postal
+                        <input type="text" id="cp" maxlength="5" placeholder="12345" required>
+                        <small class="error"></small>
+                    </label>
+                    <label>
+                        Telefono
+                        <input type="text" id="telefono" maxlength="10" placeholder="10 digitos" required>
+                        <small class="error"></small>
+                    </label>
 
+                    <button type="submit" class="realizar">Realizar pedido</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script src="script5.js"></script>
     <script src="carrito.js"></script>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function() {
+            const contenedor = document.getElementById("productos-pago");
+            let productos = JSON.parse(localStorage.getItem("productosPago")) || [];
 
-        const contenedor = document.getElementById("productos-pago");
-        let productos = JSON.parse(localStorage.getItem("productosPago")) || [];
+            if (productos.length === 0) {
+                contenedor.innerHTML = "<p>No hay productos para pagar.</p>";
+                return;
+            }
 
-        if (productos.length === 0) {
-            contenedor.innerHTML = "<p>No hay productos para pagar.</p>";
-            return;
-        }
+            let subtotalGeneral = 0;
+            const COSTO_ENVIO = 100;
+            const UMBRAL_ENVIO_GRATIS = 500;
 
-        let subtotalGeneral = 0;
-        const COSTO_ENVIO = 100;
-        const UMBRAL_ENVIO_GRATIS = 500;
+            productos.forEach(producto => {
+                const subtotal = producto.precio * producto.cantidad;
+                subtotalGeneral += subtotal;
 
-        productos.forEach(producto => {
+                const div = document.createElement("div");
+                div.className = "producto";
 
-            const subtotal = producto.precio * producto.cantidad;
-            subtotalGeneral += subtotal;
+                div.innerHTML = `
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <div class="info">
+                        <h2>${producto.nombre}</h2>
+                        <p>Talla: ${producto.talla}</p>
+                        <p>Cantidad: ${producto.cantidad}</p>
+                        <p>Llega el jueves 25 de septiembre</p>
+                    </div>
+                    <div class="resumen">
+                        <p>Subtotal: $${subtotal.toFixed(2)}</p>
+                    </div>
+                `;
+                contenedor.appendChild(div);
+            });
 
-            const div = document.createElement("div");
-            div.className = "producto";
+            const envioFinal = subtotalGeneral >= UMBRAL_ENVIO_GRATIS ? 0 : COSTO_ENVIO;
+            const totalFinal = subtotalGeneral + envioFinal;
 
-            div.innerHTML = `
-                <img src="${producto.imagen}" alt="${producto.nombre}">
-                <div class="info">
-                    <h2>${producto.nombre}</h2>
-                    <p>Talla: ${producto.talla}</p>
-                    <p>Cantidad: ${producto.cantidad}</p>
-                    <p>Llega el jueves 25 de septiembre</p>
-                </div>
-
-                <div class="resumen">
-                    <p>Subtotal: $${subtotal.toFixed(2)}</p>
-                </div>
+            contenedor.innerHTML += `
+                <hr>
+                <h3 style="text-align:right;">Subtotal general: $${subtotalGeneral.toFixed(2)} MXN</h3>
+                <h3 style="text-align:right;">Envio: $${envioFinal.toFixed(2)} MXN</h3>
+                <h2 style="text-align:right; margin-top: 10px;">
+                    TOTAL A PAGAR: $${totalFinal.toFixed(2)} MXN
+                </h2>
             `;
-
-            contenedor.appendChild(div);
         });
-
-        const envioFinal = subtotalGeneral >= UMBRAL_ENVIO_GRATIS ? 0 : COSTO_ENVIO;
-        const totalFinal = subtotalGeneral + envioFinal;
-
-        contenedor.innerHTML += `
-            <hr>
-            <h3 style="text-align:right;">Subtotal general: $${subtotalGeneral.toFixed(2)} MXN</h3>
-            <h3 style="text-align:right;">Envio: $${envioFinal.toFixed(2)} MXN</h3>
-            <h2 style="text-align:right; margin-top: 10px;">
-                TOTAL A PAGAR: $${totalFinal.toFixed(2)} MXN
-            </h2>
-        `;
-
-    });
     </script>
 
-
 </body>
-    
+
 </html>
