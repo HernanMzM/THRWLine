@@ -5,35 +5,108 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THWLINE</title>
+    <title>THWLINE Pago</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style5.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script> 
     <script src="https://kit.fontawesome.com/b408879b64.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <div id="header"></div>
-        <script>
-            fetch("header.html")
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById("header").innerHTML = data;
-                });
-        </script>
+      <div class="header-area">
+        <header>
+            <div class="menu container">
+                <img class="logo-1" src="imagenes/logo 1.png" alt="">
+                <input type="checkbox" id="menu" />
+                <label for="menu">
+                <img class="logo-2" src="imagenes/menu.png" alt="">
+                </label>
+                <a href="index.html">
+                <img class="logo-2" src="imagenes/logo 2.png" alt="">
+                </a>
+                <nav class="navbar">
+                    <div class="menu-1">
+                        <ul>
+                            <li><a href="THRWLine2.html">Lo mas nuevo</a></li>
+                            <li><a href="#">Ofertas</a></li>
+                            <li><a href="THRWLine2.html?categoria=Hombre">Hombre</a></li>
+                            <li><a href="THRWLine2.html?categoria=Mujer">Mujer</a></li>
+
+                        </ul>
+                    </div>
+                        <div class="buscador container">
+                            <input type="text" id="searchInput" placeholder="Buscar...">
+                            <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+
+                
+                    <div class="menu-2">
+                        <div class="Redirecciones">
+                        <a href="THRWLine3.html">
+                            <img src="imagenes/inciarsesion.png" alt="">
+                        </a>
+                        <a href="THRWLine4.html">
+                        <img src="imagenes/bas.png" alt="">
+                        </a>
+                        </div>
+                    </div>
+
+                </nav>
+                </div>
+        </header>
+    </div>
+
+  <div class="canasta">
+        <h1>PROCESO DE PAGO</h1>
+
+        <div class="producto">
+            <img src="imagenes/prenda2.jpg" alt="Short THRWLINE">
             
-         <footer class="footer">
-       <a onclick="mostrarAlerta('En Thrwline, sabemos que tú eres lo más importante. Por eso, diseñamos nuestra tienda online pensando en ti')">Acerca de nosotros</a>
-         <a onclick="mostrarAlerta('Términos de uso: Los datos personales de cada usuario serán protegidos mediante cookies')">Términos de uso</a>
-       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thrwline@gmail.com&su=Consulta%20sobre%20THRWLINE&body=Hola%2C%20quisiera%20más%20información%20sobre%20sus%20servicios."
-    target="_blank" title="Enviar correo por Gmail">Contacto</a>
-     <a href="https://wa.me/522462431474?text=Hola%2C%20quiero%20más%20información%20sobre%20THRWLINE"
-    target="_blank" title="Enviar mensaje por WhatsApp">WhatsApp: +52 246 243 1474</a>
-    <a href="https://www.instagram.com/trhwline?igsh=MXFtMzZtZWl3a3N6bg==" target="_blank">
-     <img src="imagenes/insta2.png" alt="Instagram THRWLINE">
-   </a>
-  </footer>
+            <div class="info">
+                <h2>THRWLINE</h2>
+                <p>Short de fitness basquetbol de hombre</p>
+                <p>Talla #G</p>
+
+                <p>
+                    Cantidad:
+                    <span class="botones">
+                        <button onclick="cambiarCantidad(-1)">−</button>
+                        <input type="text" id="cantidad" value="1" class="cantidad"
+                        oninput="this.value = this.value.replace(/[^0-9]/g,'')">
+                        <button onclick="cambiarCantidad(1)">+</button>
+                    </span>
+                </p>
+
+                <p>Llega el jueves 25 de sep.</p>
+            </div>
+
+            <div class="resumen">
+                <p>Subtotal: $300.00</p>
+                <p>Gastos de envío: $100.00</p>
+                <p class="total">Total: $400.00</p>
+            </div>
+        </div>
+
+
+        <div class="metodo_pago">
+            <h3>Forma de pago</h3>
+
+            <div class="opciones_pago">
+                <div class="opcion seleccionada"><img src="amex.png"> Tarjeta de crédito o débito</div>
+                <div class="opcion"><img src="gpay.png"> Google Pay</div>
+                <div class="opcion"><img src="oxxo.png"> OXXO</div>
+                <div class="opcion"><img src="aplazo.png"> Paga en plazos</div>
+                <div class="opcion"><img src="spei.png"> SPEI</div>
+                <div class="opcion"><img src="paypal.png"> MSI disponibles</div>
+            </div>
+
+            <div class="datos-pago"></div>
+        </div>
+
+    </div>
+
+    <script src="script4.js"></script>
   
 
 </body>
