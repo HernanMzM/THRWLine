@@ -181,11 +181,74 @@
         const UMBRAL_ENVIO_GRATIS = 500;
 
         carrito.forEach((producto, index) => {
-            const subtotal = producto.precio * producto.cantidad;
-            
-            const envio = subtotal >= UMBRAL_ENVIO_GRATIS ? 0 : COSTO_ENVIO;
-            const total = subtotal + envio;
-            totalGeneral += total;
+            let subtotalGeneral = 0;
+
+            carrito.forEach((producto, index) => {
+                const subtotal = producto.precio * producto.cantidad;
+                subtotalGeneral += subtotal;
+
+                const div = document.createElement("div");
+                div.classList.add("producto");
+                div.innerHTML = `
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <div class="info">
+                        <h2>${producto.nombre}</h2>
+                        <p>Talla: ${producto.talla}</p>
+
+                        <p>
+                            Cantidad:
+                            <span class="botones">
+                                <button onclick="cambiarCantidad(${index}, -1)">−</button>
+
+                                <input type="text" value="${producto.cantidad}" 
+                                    class="cantidad"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                                    onchange="actualizarCantidad(${index}, this)">
+
+                                <button onclick="cambiarCantidad(${index}, 1)">+</button>
+                            </span>
+                        </p>
+
+                        <p>Llega el jueves 25 de septiembre</p>
+                    </div>
+
+                    <div class="resumen">
+                        <p>Subtotal: $${subtotal.toFixed(2)}</p>
+
+                        <button onclick="eliminarProducto(${index})"
+                            style="background:black;color:white;border:none;padding:10px 20px;border-radius:5px;margin-top:10px;">
+                            ELIMINAR
+                        </button>
+                    </div>
+                `;
+                listaProductos.appendChild(div);
+            });
+
+            const COSTO_ENVIO = 100;
+            const UMBRAL_ENVIO_GRATIS = 500;
+
+            let costoEnvioFinal = subtotalGeneral >= UMBRAL_ENVIO_GRATIS ? 0 : COSTO_ENVIO;
+            let totalFinal = subtotalGeneral + costoEnvioFinal;
+
+            resumenFinal.innerHTML = `
+                <hr>
+                <p style="text-align:right;">Subtotal general: $${subtotalGeneral.toFixed(2)} MXN</p>
+                <p style="text-align:right;">Gastos de envio: $${costoEnvioFinal.toFixed(2)} MXN</p>
+                <h3 style="text-align:right;font-weight:bold;">Total a pagar: $${totalFinal.toFixed(2)} MXN</h3>
+
+                <div style="text-align:right; display:flex; justify-content:flex-end; gap:10px; margin-top:15px;">
+                    <button onclick="pagarAhora()" 
+                        style="font-weight:bold;background:black;color:white;border:none;padding:10px 20px;border-radius:5px;">
+                        PAGAR TODO
+                    </button>
+
+                    <button onclick="vaciarCanasta()" 
+                        style="font-weight:bold;background:#f44336;color:white;border:none;padding:10px 20px;border-radius:5px;">
+                        Vaciar Canasta
+                    </button>
+                </div>
+            `;
+
 
             const div = document.createElement("div");
             div.classList.add("producto");

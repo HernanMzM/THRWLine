@@ -263,10 +263,8 @@
         );
 
         if (indice !== -1) {
-            // REEMPLAZA la cantidad con la cantidad actual del formulario
             cesta[indice].cantidad = producto.cantidad;
         } else {
-            // Si no existía, lo añade como si fuera la primera vez
             cesta.push(producto);
         }
         
@@ -274,17 +272,15 @@
         return true;
     }
 
-    // --- MANEJADORES DE EVENTOS ---
-
-    // Botón "Agregar al carrito"
     btnAgregar.addEventListener('click', () => {
         const producto = obtenerDetallesProducto();
         if (manejarAgregarAlCarrito(producto)) {
+            actualizarCarritoIcono(); 
             alert(`El producto "${producto.nombre} (Talla ${producto.talla})" fue agregado a la cesta.`);
         }
     });
 
-    // Botón "Pagar ahora"
+
     btnPagar.addEventListener('click', () => {
         const producto = obtenerDetallesProducto();
         if (manejarPagarAhora(producto)) {
