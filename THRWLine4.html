@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <meta charset="UTF-8">
-  <title>Tu Canasta</title>
-  <link rel="stylesheet" href="style4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <title>Tu Canasta</title>
+    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script> 
+    <script src="https://kit.fontawesome.com/b408879b64.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <div class="header-area">
-        <header>
+        <header>    
             <div class="menu container">
                 <img class="logo-1" src="imagenes/logo 1.png" alt="">
                 <input type="checkbox" id="menu" />
@@ -40,9 +43,13 @@
                         <a href="THRWLine3.html">
                             <img src="imagenes/inciarsesion.png" alt="">
                         </a>
-                        <a href="THRWLine4.html">
-                        <img src="imagenes/bas.png" alt="">
+                        <div class="carrito-icono">
+                        <a href="THRWLine4.html" class="carrito-icono">
+                            <img src="imagenes/bas.png" alt="">
+                            <span id="carrito-contador">0</span>
                         </a>
+                        </div>
+
                         </div>
                     </div>
 
@@ -50,6 +57,7 @@
                 </div>
         </header>
     </div>
+
     
     <script>
         document.getElementById("searchBtn").addEventListener("click", () => {
@@ -65,6 +73,17 @@
                 document.getElementById("searchBtn").click();
             }
         });
+        function actualizarCarritoIcono() {
+            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            let total = carrito.reduce((acum, p) => acum + p.cantidad, 0);
+
+            let icono = document.getElementById("carrito-contador");
+            if (icono) icono.textContent = total;
+        }
+
+        // Llamar apenas cargue la pagina
+        actualizarCarritoIcono();
+
     </script>
   
    <div class="canasta">
@@ -117,11 +136,35 @@
     }
 
     function pagarAhora() {
+        let usuario = localStorage.getItem("usuarioLogueado");
         
-        alert("Redirigiendo a la página de pago...");
-        window.location.href = "THRWLine3.html";
+        let carrito = JSON.parse(localStorage.getItem("cestaProductos")) || [];
+        localStorage.setItem("productosPago", JSON.stringify(carrito)); 
+
+        if (usuario) {
+
+            window.location.href = "THRWLine5.html";
+        } else {
+
+            alert("Debes iniciar sesion antes de pagar");
+            window.location.href = "THRWLine3.html";
+        }
     }
 
+    function cambiarCantidad(index, cambio) {
+    let carrito = JSON.parse(localStorage.getItem('cestaProductos')) || [];
+
+    if (!carrito[index]) return;
+
+    let nuevaCantidad = carrito[index].cantidad + cambio;
+
+    if (nuevaCantidad < 1) nuevaCantidad = 1;
+
+    carrito[index].cantidad = nuevaCantidad;
+    localStorage.setItem('cestaProductos', JSON.stringify(carrito));
+
+    mostrarCanasta(); 
+}
    
     function mostrarCanasta() {
         const carrito = JSON.parse(localStorage.getItem('cestaProductos')) || [];
@@ -151,11 +194,18 @@
             <div class="info">
                 <h2>${producto.nombre}</h2>
                 <p>Talla: ${producto.talla}</p>
-                <p>Cantidad: 
-                    <input type="text" value="${producto.cantidad}" 
-                    class="cantidad" 
-                    oninput="this.value = this.value.replace(/[^0-9]/g,'')"
-                    onchange="actualizarCantidad(${index}, this)">
+                <p>
+                    Cantidad:
+                    <span class="botones">
+                        <button onclick="cambiarCantidad(${index}, -1)">−</button>
+
+                        <input type="text" value="${producto.cantidad}" 
+                            class="cantidad"
+                            oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                            onchange="actualizarCantidad(${index}, this)">
+
+                        <button onclick="cambiarCantidad(${index}, 1)">+</button>
+                    </span>
                 </p>
                 <p>Llega el jueves 25 de septiembre</p>
             </div>
@@ -197,5 +247,7 @@
     
     mostrarCanasta();
 </script>
+<script src="carrito.js"></script>
+
 </body>
 </html>

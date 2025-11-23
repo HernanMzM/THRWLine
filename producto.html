@@ -40,9 +40,13 @@
                         <a href="THRWLine3.html">
                             <img src="imagenes/inciarsesion.png" alt="">
                         </a>
-                        <a href="THRWLine4.html">
+                        <div class="carrito-icono">
+                        <a href="THRWLine4.html" class="carrito-icono">
                             <img src="imagenes/bas.png" alt="">
+                            <span id="carrito-contador">0</span>
                         </a>
+                    </div>
+
                     </div>
                 </div>
 
@@ -63,7 +67,19 @@
                 document.getElementById("searchBtn").click();
             }
         });
+        function actualizarCarritoIcono() {
+            let carrito = JSON.parse(localStorage.getItem("cestaProductos")) || [];
+            let total = carrito.reduce((acum, p) => acum + p.cantidad, 0);
+
+            let icono = document.getElementById("carrito-contador");
+            if (icono) icono.textContent = total;
+        }
+
+        // Llamar apenas cargue la pagina
+        actualizarCarritoIcono();
+
     </script>
+
 
 
     <main class="carrito">
@@ -208,9 +224,9 @@
         return { nombre, precio: precioNumerico, imagen: imagenSrc, talla, cantidad };
     }
 
-    // Función para manejar el "Agregar al carrito" (SUMA la cantidad)
     function manejarAgregarAlCarrito(producto) {
         if (producto.talla === 'No seleccionada') {
+            actualizarCarritoIcono(); 
             alert('Por favor, selecciona una talla antes de continuar.');
             return false;
         }

@@ -24,6 +24,7 @@ formLogin.addEventListener("submit", function(e) {
     alert("Por favor, llene todos los campos");
   } else {
     alert("Bienvenido " + correo);
+    localStorage.setItem("usuarioLogueado", correo);
     formLogin.reset();
      window.location.href = "index.html"; // 🔹 Redirige al index.html
     
@@ -31,17 +32,22 @@ formLogin.addEventListener("submit", function(e) {
 });
 
 formRegistro.addEventListener("submit", function(e) {
-  e.preventDefault();
-  let nombre = document.getElementById("nombre").value.trim();
-  let correo = document.getElementById("correoRegistro").value.trim();
-  let pass = document.getElementById("passRegistro").value.trim();
+    e.preventDefault();
 
-  if (nombre === "" || correo === "" || pass === "") {
-    alert("Por favor, llene todos los campos");
-  } else {
-    alert("Registro completado, " + nombre);
-    formRegistro.reset();
-    formRegistro.style.display = "none";
-    formLogin.style.display = "block";
-  }
+    let nombre = document.getElementById("nombre").value.trim();
+    let correo = document.getElementById("correoRegistro").value.trim();
+    let pass = document.getElementById("passRegistro").value.trim();
+
+    if (nombre === "" || correo === "" || pass === "") {
+        alert("Por favor, llene todos los campos");
+    } else {
+        alert("Registro completado, " + nombre);
+
+        // Guardar que SI esta registrado
+        localStorage.setItem("usuarioLogueado", correo);
+
+        formRegistro.reset();
+        formRegistro.style.display = "none";
+        formLogin.style.display = "block";
+    }
 });

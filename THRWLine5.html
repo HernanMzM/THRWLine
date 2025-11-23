@@ -46,9 +46,13 @@
                         <a href="THRWLine3.html">
                             <img src="imagenes/inciarsesion.png" alt="">
                         </a>
-                        <a href="THRWLine4.html">
-                        <img src="imagenes/bas.png" alt="">
+                        <div class="carrito-icono">
+                        <a href="THRWLine4.html" class="carrito-icono">
+                            <img src="imagenes/bas.png" alt="">
+                            <span id="carrito-contador">0</span>
                         </a>
+                        </div>
+
                         </div>
                     </div>
 
@@ -60,45 +64,20 @@
   <div class="canasta">
         <h1>PROCESO DE PAGO</h1>
 
-        <div class="producto">
-            <img src="imagenes/prenda2.jpg" alt="Short THRWLINE">
-            
-            <div class="info">
-                <h2>THRWLINE</h2>
-                <p>Short de fitness basquetbol de hombre</p>
-                <p>Talla #G</p>
+        <div id="productos-pago"></div>
 
-                <p>
-                    Cantidad:
-                    <span class="botones">
-                        <button onclick="cambiarCantidad(-1)">−</button>
-                        <input type="text" id="cantidad" value="1" class="cantidad"
-                        oninput="this.value = this.value.replace(/[^0-9]/g,'')">
-                        <button onclick="cambiarCantidad(1)">+</button>
-                    </span>
-                </p>
-
-                <p>Llega el jueves 25 de sep.</p>
-            </div>
-
-            <div class="resumen">
-                <p>Subtotal: $300.00</p>
-                <p>Gastos de envío: $100.00</p>
-                <p class="total">Total: $400.00</p>
-            </div>
-        </div>
 
 
         <div class="metodo_pago">
             <h3>Forma de pago</h3>
 
             <div class="opciones_pago">
-                <div class="opcion seleccionada"><img src="amex.png"> Tarjeta de crédito o débito</div>
-                <div class="opcion"><img src="gpay.png"> Google Pay</div>
-                <div class="opcion"><img src="oxxo.png"> OXXO</div>
-                <div class="opcion"><img src="aplazo.png"> Paga en plazos</div>
-                <div class="opcion"><img src="spei.png"> SPEI</div>
-                <div class="opcion"><img src="paypal.png"> MSI disponibles</div>
+                <div class="opcion seleccionada"><img src="imagenes/tarjeta.png"> Tarjeta de crédito o débito</div>
+                <div class="opcion"><img src="imagenes/gpay.png"> Google Pay</div>
+                <div class="opcion"><img src="imagenes/oxxo.png"> OXXO</div>
+                <div class="opcion"><img src="imagenes/aplazo.png"> Paga en plazos</div>
+                <div class="opcion"><img src="imagenes/spei.png"> SPEI</div>
+                <div class="opcion"><img src="imagenes/paypal.png"> MSI disponibles</div>
             </div>
 
             <div class="datos-pago"></div>
@@ -106,8 +85,60 @@
 
     </div>
 
-    <script src="script4.js"></script>
-  
+    <script src="script5.js"></script>
+    <script src="carrito.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const contenedor = document.getElementById("productos-pago");
+            let productos = JSON.parse(localStorage.getItem("productosPago")) || [];
+
+            if (productos.length === 0) {
+                contenedor.innerHTML = "<p>No hay productos para pagar.</p>";
+                return;
+            }
+
+            let totalGeneral = 0;
+            const COSTO_ENVIO = 100;
+            const UMBRAL_ENVIO_GRATIS = 500;
+
+            productos.forEach(producto => {
+
+                const subtotal = producto.precio * producto.cantidad;
+                const envio = subtotal >= UMBRAL_ENVIO_GRATIS ? 0 : COSTO_ENVIO;
+                const total = subtotal + envio;
+                totalGeneral += total;
+
+                const div = document.createElement("div");
+                div.className = "producto";
+
+                div.innerHTML = `
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <div class="info">
+                        <h2>${producto.nombre}</h2>
+                        <p>Talla: ${producto.talla}</p>
+                        <p>Cantidad: ${producto.cantidad}</p>
+                        <p>Llega el jueves 25 de septiembre</p>
+                    </div>
+
+                    <div class="resumen">
+                        <p>Subtotal: $${subtotal.toFixed(2)}</p>
+                        <p>Envio: $${envio.toFixed(2)}</p>
+                        <p class="total">Total: $${total.toFixed(2)}</p>
+                    </div>
+                `;
+
+                contenedor.appendChild(div);
+            });
+
+            contenedor.innerHTML += `
+                <hr>
+                <h2 style="text-align:right;">TOTAL A PAGAR: $${totalGeneral.toFixed(2)} MXN</h2>
+            `;
+
+        });
+    </script>
 
 </body>
     
