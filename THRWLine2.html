@@ -55,41 +55,21 @@
             </div>
     </header>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const params = new URLSearchParams(window.location.search);
-            const productos = document.querySelectorAll(".producto");
-
-            // FILTRO POR OFERTAS
-            if (params.has("ofertas")) {
-                productos.forEach(prod => {
-                    if (prod.getAttribute("data-oferta") !== "true") {
-                        prod.style.display = "none";
-                    }
-                });
-            }
-
-            // FILTRO POR CATEGORIA
-            if (params.has("categoria")) {
-                const categoria = params.get("categoria").toLowerCase();
-                productos.forEach(prod => {
-                    if (prod.getAttribute("data-categoria") !== categoria) {
-                        prod.style.display = "none";
-                    }
-                });
-            }
-
-            // BUSQUEDA
-            if (params.has("buscar")) {
-                const texto = params.get("buscar").toLowerCase();
-                productos.forEach(prod => {
-                    const tags = prod.getAttribute("data-tags");
-                    if (!tags.includes(texto)) {
-                        prod.style.display = "none";
-                    }
-                });
-            }
-        });
+    document.getElementById("searchBtn").addEventListener("click", () => {
+        const texto = document.getElementById("searchInput").value.trim();
+        if (texto.length > 0) {
+            window.location.href = `THRWLine2.html?buscar=${encodeURIComponent(texto)}`;
+        }
+    });
     </script>
+    <script>
+    document.getElementById("searchInput").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            document.getElementById("searchBtn").click();
+        }
+    });
+    </script>
+
 
 
     
