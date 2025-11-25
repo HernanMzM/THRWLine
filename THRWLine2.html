@@ -25,7 +25,7 @@
                 <div class="menu-1">
                     <ul>
                         <li><a href="THRWLine2.html">Lo mas nuevo</a></li>
-                        <li><a href="#">Ofertas</a></li>
+                        <li><a href="THRWLine2.html?ofertas=true">Ofertas</a></li>
                         <li><a href="THRWLine2.html?categoria=Hombre">Hombre</a></li>
                         <li><a href="THRWLine2.html?categoria=Mujer">Mujer</a></li>
 
@@ -55,20 +55,42 @@
             </div>
     </header>
     <script>
-        document.getElementById("searchBtn").addEventListener("click", () => {
-            const texto = document.getElementById("searchInput").value.trim();
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const productos = document.querySelectorAll(".producto");
 
-            if (texto !== "") {
-                window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
-
+            // FILTRO POR OFERTAS
+            if (params.has("ofertas")) {
+                productos.forEach(prod => {
+                    if (prod.getAttribute("data-oferta") !== "true") {
+                        prod.style.display = "none";
+                    }
+                });
             }
-        });
-        document.getElementById("searchInput").addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                document.getElementById("searchBtn").click();
+
+            // FILTRO POR CATEGORIA
+            if (params.has("categoria")) {
+                const categoria = params.get("categoria").toLowerCase();
+                productos.forEach(prod => {
+                    if (prod.getAttribute("data-categoria") !== categoria) {
+                        prod.style.display = "none";
+                    }
+                });
+            }
+
+            // BUSQUEDA
+            if (params.has("buscar")) {
+                const texto = params.get("buscar").toLowerCase();
+                productos.forEach(prod => {
+                    const tags = prod.getAttribute("data-tags");
+                    if (!tags.includes(texto)) {
+                        prod.style.display = "none";
+                    }
+                });
             }
         });
     </script>
+
 
     
     <aside class="sidebar">
@@ -88,6 +110,8 @@
 
         <div class="producto"
             data-categoria="hombre"
+            data-oferta="true"
+
             data-tipo="playera"
             data-color="negro"
             data-estilo="deportivo"
@@ -104,6 +128,7 @@
         <div class="producto"
             data-categoria="hombre"
             data-tipo="short"
+            data-oferta="true"
             data-color="blanco"
             data-estilo="deportivo"
             data-genero="hombre"
@@ -202,6 +227,7 @@
             data-tipo="top"
             data-color="amarillo"
             data-estilo="deportivo"
+            data-oferta="true"
             data-genero="mujer"
             data-tags="top basico mujer gym deporte correr fitness">
 
@@ -217,6 +243,7 @@
             data-tipo="sudadera"
             data-color="rojo"
             data-estilo="casual"
+            data-oferta="true"
             data-genero="hombre"
             data-tags="sudadera hombre basica casual abrigo">
 
@@ -263,6 +290,7 @@
             data-categoria="hombre"
             data-tipo="playera"
             data-color="negro"
+            data-oferta="true"
             data-estilo="deportivo"
             data-genero="hombre"
             data-tags="playera sin mangas gym deporte fitness running">
@@ -296,6 +324,7 @@
             data-tipo="playera"
             data-color="blanco"
             data-estilo="casual"
+            data-oferta="true"
             data-genero="hombre"
             data-tags="playera hombre camiseta basica casual ropa">
 
@@ -384,6 +413,7 @@
         </div>
 
         <div class="producto"
+            data-oferta="true"
             data-categoria="hombre"
             data-tipo="playera"
             data-color="verde"
@@ -400,6 +430,7 @@
 
         <div class="producto"
             data-categoria="hombre"
+            data-oferta="true"
             data-tipo="short"
             data-color="gris"
             data-estilo="deportivo"
@@ -445,6 +476,7 @@
 
         <div class="producto"
             data-categoria="mujer"
+            data-oferta="true"
             data-tipo="short"
             data-color="morado"
             data-estilo="deportivo"
@@ -519,6 +551,7 @@
         </div>
        <div class="producto"
             data-categoria="hombre"
+            data-oferta="true"
             data-tipo="chamarra"
             data-color="blanco"
             data-estilo="deportivo"
@@ -552,7 +585,7 @@
             data-tipo="conjunto"
             data-color="blanco"
             data-estilo="deportivo"
-            data-genero="mujer"
+            data-oferta="true"
             data-genero="hombre"
            data-tags="conjunto deportivo par en pareja">
 
@@ -596,6 +629,7 @@
         <div class="producto"
             data-categoria="Hombre"
             data-tipo="conjunto"
+            data-oferta="true"
             data-color="blanco"
             data-estilo="deportivo"
             data-genero="hombre"
@@ -679,6 +713,7 @@
             </a>
         </div>
         <div class="producto"
+            data-oferta="true"
             data-categoria="hombre"
             data-tipo="short"
             data-color="blanco"
@@ -735,6 +770,7 @@
             </a>
         </div>
          <div class="producto"
+            data-oferta="true"
             data-categoria="mujer"
             data-tipo="jersey"
             data-color="verde"
@@ -880,25 +916,20 @@
     let categoria = params.get("categoria"); 
     let buscar = params.get("buscar");  
 
-    // Normalizar texto (acentos, plural, espacios)
     function normalizar(texto) {
         let t = texto
             .toLowerCase()
             .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
             .trim();
 
-        // quitar plurales comunes
         t = t.replace(/(os|as|es)$/, "");
 
-        // quitar vocal final para unificar genero y variantes
-        // NOTA IMPORTANTE: Esta línea afecta a la concordancia con las claves de 'sinonimos' si no se normalizan.
         t = t.replace(/[aeiou]$/, "");
 
         return t;
     }
 
-    // ---------------- SINONIMOS ORIGINALES ----------------
-    // Estas son las palabras clave que se buscan.
+
     const sinonimos = {
         playera: ["camisa", "camiseta"],
         chamarra: ["abrigo", "jacket"],
@@ -910,28 +941,20 @@
 
     };
 
-    // ---------------- SINONIMOS NORMALIZADOS ----------------
-    // Creamos un nuevo objeto aplicando la normalización a las claves.
-    // Esto asegura que la palabra buscada (ej: "player") coincida con la clave
-    // que usamos internamente (ej: "playera" normalizada a "player").
     const sinonimosNormalizados = {};
     for (const key in sinonimos) {
-        // Normalizamos la clave (ej: "playera" -> "player")
         const claveNormalizada = normalizar(key); 
-        // El array de sinónimos se mantiene, ya que serán buscados por 'includes' más tarde.
         sinonimosNormalizados[claveNormalizada] = sinonimos[key];
     }
 
     function expandirSinonimos(palabraNormalizada) {
-        // Ahora buscamos en el objeto normalizado
         if (sinonimosNormalizados[palabraNormalizada]) {
-            // Retorna la palabra normalizada (la clave) y sus sinónimos
             return [palabraNormalizada, ...sinonimosNormalizados[palabraNormalizada]];
         }
         return [palabraNormalizada];
     }
 
-    // ---------------- BUSQUEDA CON ERRORES (LEVENSHTEIN) ----------------
+
     function distancia(a, b) {
         const dp = Array.from({ length: a.length + 1 }, (_, i) =>
             Array.from({ length: b.length + 1 }, (_, j) =>
@@ -952,29 +975,27 @@
     }
 
     function esParecido(a, b) {
-        return distancia(a, b) <= 2; // tolera hasta 2 errores
+        return distancia(a, b) <= 2; 
     }
 
-    // ---------------- PARSEO ----------------
     const filtroCategoria = categoria ? normalizar(categoria) : null;
 
     let palabrasBusqueda = [];
     if (buscar) {
         palabrasBusqueda = buscar
             .split(" ")
-            .map(p => normalizar(p)) // Aquí se normaliza la palabra de búsqueda
+            .map(p => normalizar(p)) 
             .filter(p => p.length > 0)
-            // Se usa flatMap para expandir los sinónimos.
-            // Si la palabra normalizada existe como clave normalizada en sinonimosNormalizados, se expande.
+
             .flatMap(expandirSinonimos); 
     }
 
-    // ---------------- FILTRO ----------------
+    //FILTRO
     let productosEncontrados = 0;
 
     document.querySelectorAll(".producto").forEach(producto => {
 
-        // Los atributos del producto también son normalizados
+
         const categoriaP = normalizar(producto.dataset.categoria || "");
         const tipoP = normalizar(producto.dataset.tipo || "");
         const generoP = normalizar(producto.dataset.genero || "");
@@ -986,7 +1007,6 @@
 
         let puntaje = 0;
 
-        // FILTRO POR CATEGORIA EXACTA
         if (filtroCategoria) {
             if (
                 categoriaP.includes(filtroCategoria) ||
@@ -1000,10 +1020,8 @@
             }
         }
 
-        // ---------------- BUSQUEDA MULTIPLE MEJORADA ----------------
         for (let palabra of palabrasBusqueda) {
 
-            // Coincidencia exacta (la palabra ya puede ser un sinónimo expandido)
             if (
                 nombreP.includes(palabra) ||
                 categoriaP.includes(palabra) ||
@@ -1069,6 +1087,22 @@
     }
 </script>
 <script src="carrito.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const productos = document.querySelectorAll('.producto[data-oferta="true"]');
+
+    productos.forEach(prod => {
+        const etiqueta = document.createElement("div");
+        etiqueta.classList.add("etiqueta-oferta");
+        etiqueta.textContent = "OFERTA";
+
+        // Insertarla dentro del <a> pero antes de la imagen
+        const aTag = prod.querySelector("a");
+        aTag.prepend(etiqueta);
+    });
+});
+</script>
 
 
 
