@@ -55,53 +55,60 @@
             </div>
     </header>
     <script>
-        document.getElementById("searchBtn").addEventListener("click", () => {
-            const texto = document.getElementById("searchInput").value.trim();
 
-            if (texto !== "") {
-                window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
-        document.addEventListener("DOMContentLoaded", () => {
-            const params = new URLSearchParams(window.location.search);
-            const productos = document.querySelectorAll(".producto");
+    // Evento de Click en el botón de búsqueda
+    document.getElementById("searchBtn").addEventListener("click", () => {
+        const texto = document.getElementById("searchInput").value.trim();
 
-            // FILTRO POR OFERTAS
-            if (params.has("ofertas")) {
-                productos.forEach(prod => {
-                    if (prod.getAttribute("data-oferta") !== "true") {
-                        prod.style.display = "none";
-                    }
-                });
-            }
-            
-        });
-        document.getElementById("searchInput").addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                document.getElementById("searchBtn").click();
+        if (texto !== "") {
+            window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
+        }
+    });
+    
+    document.getElementById("searchInput").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            document.getElementById("searchBtn").click();
+        }
+    });
 
-            // FILTRO POR CATEGORIA
-            if (params.has("categoria")) {
-                const categoria = params.get("categoria").toLowerCase();
-                productos.forEach(prod => {
-                    if (prod.getAttribute("data-categoria") !== categoria) {
-                        prod.style.display = "none";
-                    }
-                });
-            }
+    // 2. LÓGICA DE FILTRADO 
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const productos = document.querySelectorAll(".producto");
 
-            // BUSQUEDA
-            if (params.has("buscar")) {
-                const texto = params.get("buscar").toLowerCase();
-                productos.forEach(prod => {
-                    const tags = prod.getAttribute("data-tags");
-                    if (!tags.includes(texto)) {
-                        prod.style.display = "none";
-                    }
-                });
-            }
-        });
-    </script>
+        // --- FILTRO POR OFERTAS ---
+        if (params.has("ofertas")) {
+            productos.forEach(prod => {
+                if (prod.getAttribute("data-oferta") !== "true") {
+                    prod.style.display = "none";
+                }
+            });
+        }
+        
+        // --- FILTRO POR CATEGORÍA ---
+        if (params.has("categoria")) {
+            const categoria = params.get("categoria").toLowerCase();
+            productos.forEach(prod => {
+                if (prod.getAttribute("data-categoria") !== categoria && prod.style.display !== "none") {
+                    prod.style.display = "none";
+                }
+            });
+        }
 
-
+        if (params.has("buscar")) {
+            const texto = params.get("buscar").toLowerCase();
+            productos.forEach(prod => {
+                const tags = prod.getAttribute("data-tags") ? prod.getAttribute("data-tags").toLowerCase() : "";
+                
+                
+                if (!tags.includes(texto) && prod.style.display !== "none") {
+                    prod.style.display = "none";
+                }
+            });
+        }
+    });
+</script>
     
     <aside class="sidebar">
     <ul>
