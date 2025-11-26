@@ -5,39 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THRWLINE - Productos</title>
     <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b408879b64.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <header>
-        <div class="menu container">
-            <img class="logo-1" src="imagenes/logo 1.png" alt="">
-            <input type="checkbox" id="menu" />
-            <label for="menu">
+<header>
+    <div class="menu container">
+        <img class="logo-1" src="imagenes/logo 1.png" alt="">
+        <input type="checkbox" id="menu">
+        <label for="menu">
             <img class="logo-2" src="imagenes/menu.png" alt="">
-            </label>
-            <a href="index.html">
+        </label>
+        <a href="index.html">
             <img class="logo-2" src="imagenes/logo 2.png" alt="">
-            </a>
-            <nav class="navbar">
-                <div class="menu-1">
-                    <ul>
-                        <li><a href="THRWLine2.html">Lo mas nuevo</a></li>
-                        <li><a href="THRWLine2.html?ofertas=true">Ofertas</a></li>
-                        <li><a href="THRWLine2.html?categoria=Hombre">Hombre</a></li>
-                        <li><a href="THRWLine2.html?categoria=Mujer">Mujer</a></li>
+        </a>
 
-                    </ul>
-                </div>
-                    <div class="buscador container">
-                        <input type="text" id="searchInput" placeholder="Buscar...">
-                        <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-            
-                <div class="menu-2">
-                    <div class="Redirecciones">
+        <nav class="navbar">
+            <div class="menu-1">
+                <ul>
+                    <li><a href="THRWLine2.html">Lo mas nuevo</a></li>
+                    <li><a href="THRWLine2.html?ofertas=true">Ofertas</a></li>
+                    <li><a href="THRWLine2.html?categoria=Hombre">Hombre</a></li>
+                    <li><a href="THRWLine2.html?categoria=Mujer">Mujer</a></li>
+                </ul>
+            </div>
+
+            <div class="buscador container">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <div class="menu-2">
+                <div class="Redirecciones">
                     <a href="THRWLine3.html">
                         <img src="imagenes/inciarsesion.png" alt="">
                     </a>
@@ -47,88 +47,47 @@
                             <span id="carrito-contador">0</span>
                         </a>
                     </div>
-
-                    </div>
                 </div>
-
-            </nav>
             </div>
-    </header>
-    <script>
 
-    // Evento de Click en el botón de búsqueda
-    document.getElementById("searchBtn").addEventListener("click", () => {
-        const texto = document.getElementById("searchInput").value.trim();
+        </nav>
+    </div>
+</header>
 
-        if (texto !== "") {
-            window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
-        }
-    });
-    
-    document.getElementById("searchInput").addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            document.getElementById("searchBtn").click();
-        }
-    });
-
-    // 2. LÓGICA DE FILTRADO 
-    
-    document.addEventListener("DOMContentLoaded", () => {
-        const params = new URLSearchParams(window.location.search);
-        const productos = document.querySelectorAll(".producto");
-
-        // --- FILTRO POR OFERTAS ---
-        if (params.has("ofertas")) {
-            productos.forEach(prod => {
-                if (prod.getAttribute("data-oferta") !== "true") {
-                    prod.style.display = "none";
-                }
-            });
-        }
-        
-        // --- FILTRO POR CATEGORÍA ---
-        if (params.has("categoria")) {
-            const categoria = params.get("categoria").toLowerCase();
-            productos.forEach(prod => {
-                if (prod.getAttribute("data-categoria") !== categoria && prod.style.display !== "none") {
-                    prod.style.display = "none";
-                }
-            });
-        }
-
-        if (params.has("buscar")) {
-            const texto = params.get("buscar").toLowerCase();
-            productos.forEach(prod => {
-                const tags = prod.getAttribute("data-tags") ? prod.getAttribute("data-tags").toLowerCase() : "";
-                
-                
-                if (!tags.includes(texto) && prod.style.display !== "none") {
-                    prod.style.display = "none";
-                }
-            });
-        }
-    });
+<!-- SCRIPT 1: FUNCION BUSCADOR (redireccion) -->
+<script>
+document.getElementById("searchBtn").addEventListener("click", () => {
+    const texto = document.getElementById("searchInput").value.trim();
+    if (texto !== "") {
+        window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
+    }
+});
+document.getElementById("searchInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        document.getElementById("searchBtn").click();
+    }
+});
 </script>
-    
-    <aside class="sidebar">
-    <ul>
-       <li><a href="THRWLine2.html?categoria=Playera">Playeras</a></li>
-      <li><a href="THRWLine2.html?categoria=Sudadera">Sudaderas</a></li>
-       <li><a href="THRWLine2.html?categoria=Chamarra">Chamarras</a></li>
-     <li><a href="THRWLine2.html?categoria=jersey">Jerseys</a></li>
-      <li><a href="THRWLine2.html?categoria=Short">Shorts</a></li>
-     <li><a href="THRWLine2.html?categoria=Top">Tops</a></li>
-     <li><a href="THRWLine2.html?categoria=Conjunto">Conjuntos</a></li>
-     <li><a href="THRWLine2.html">Ver Todo</a></li>
-    </ul>
-     </aside>
 
-    <main class="productos-grid">
+<aside class="sidebar">
+    <ul>
+        <li><a href="THRWLine2.html?categoria=Playera">Playeras</a></li>
+        <li><a href="THRWLine2.html?categoria=Sudadera">Sudaderas</a></li>
+        <li><a href="THRWLine2.html?categoria=Chamarra">Chamarras</a></li>
+        <li><a href="THRWLine2.html?categoria=jersey">Jerseys</a></li>
+        <li><a href="THRWLine2.html?categoria=Short">Shorts</a></li>
+        <li><a href="THRWLine2.html?categoria=Top">Tops</a></li>
+        <li><a href="THRWLine2.html?categoria=Conjunto">Conjuntos</a></li>
+        <li><a href="THRWLine2.html">Ver Todo</a></li>
+    </ul>
+</aside>
+
+<main class="productos-grid">
+
 
         <div class="producto"
-            data-categoria="hombre"
             data-oferta="true"
-
+            data-categoria="hombre"
             data-tipo="playera"
             data-color="negro"
             data-estilo="deportivo"
@@ -143,9 +102,9 @@
         </div>
 
         <div class="producto"
+            
             data-categoria="hombre"
             data-tipo="short"
-            data-oferta="true"
             data-color="blanco"
             data-estilo="deportivo"
             data-genero="hombre"
@@ -192,6 +151,7 @@
 
 
         <div class="producto"
+            data-oferta="true"
             data-categoria="hombre"
             data-tipo="sudadera"
             data-color="negro"
@@ -224,6 +184,7 @@
 
 
         <div class="producto"
+            data-oferta="true"
             data-categoria="hombre"
             data-tipo="playera"
             data-color="negro"
@@ -240,11 +201,11 @@
 
 
         <div class="producto"
+            data-oferta="true"
             data-categoria="mujer"
             data-tipo="top"
             data-color="amarillo"
             data-estilo="deportivo"
-            data-oferta="true"
             data-genero="mujer"
             data-tags="top basico mujer gym deporte correr fitness">
 
@@ -260,7 +221,6 @@
             data-tipo="sudadera"
             data-color="rojo"
             data-estilo="casual"
-            data-oferta="true"
             data-genero="hombre"
             data-tags="sudadera hombre basica casual abrigo">
 
@@ -304,10 +264,10 @@
 
 
         <div class="producto"
+            data-oferta="true"
             data-categoria="hombre"
             data-tipo="playera"
             data-color="negro"
-            data-oferta="true"
             data-estilo="deportivo"
             data-genero="hombre"
             data-tags="playera sin mangas gym deporte fitness running">
@@ -337,11 +297,11 @@
 
 
         <div class="producto"
+            data-oferta="true"
             data-categoria="hombre"
             data-tipo="playera"
             data-color="blanco"
             data-estilo="casual"
-            data-oferta="true"
             data-genero="hombre"
             data-tags="playera hombre camiseta basica casual ropa">
 
@@ -370,6 +330,7 @@
 
 
         <div class="producto"
+            data-oferta="true"
             data-categoria="mujer"
             data-tipo="sudadera"
             data-color="blanco"
@@ -400,6 +361,7 @@
         </div>
 
         <div class="producto"
+            data-oferta="true"
             data-categoria="hombre"
             data-tipo="short"
             data-color="negro"
@@ -446,8 +408,8 @@
         </div>
 
         <div class="producto"
-            data-categoria="hombre"
             data-oferta="true"
+            data-categoria="hombre"
             data-tipo="short"
             data-color="gris"
             data-estilo="deportivo"
@@ -477,6 +439,7 @@
         </div>
 
         <div class="producto"
+            data-oferta="true"
             data-categoria="mujer"
             data-tipo="top"
             data-color="rosa"
@@ -493,7 +456,6 @@
 
         <div class="producto"
             data-categoria="mujer"
-            data-oferta="true"
             data-tipo="short"
             data-color="morado"
             data-estilo="deportivo"
@@ -509,6 +471,7 @@
         
 
         <div class="producto"
+            data-oferta="true"
             data-categoria="mujer"
             data-tipo="playera"
             data-color="blanco"
@@ -538,6 +501,7 @@
             </a>
         </div>
         <div class="producto"
+            data-oferta="true"
             data-categoria="conjunto"
             data-tipo="short"
             data-color="negro"
@@ -568,7 +532,6 @@
         </div>
        <div class="producto"
             data-categoria="hombre"
-            data-oferta="true"
             data-tipo="chamarra"
             data-color="blanco"
             data-estilo="deportivo"
@@ -602,7 +565,7 @@
             data-tipo="conjunto"
             data-color="blanco"
             data-estilo="deportivo"
-            data-oferta="true"
+            data-genero="mujer"
             data-genero="hombre"
            data-tags="conjunto deportivo par en pareja">
 
@@ -629,6 +592,7 @@
         </div>
         
         <div class="producto"
+            data-oferta="true"
             data-categoria="hombre"
             data-tipo="sudadera"
             data-color="negro"
@@ -646,7 +610,6 @@
         <div class="producto"
             data-categoria="Hombre"
             data-tipo="conjunto"
-            data-oferta="true"
             data-color="blanco"
             data-estilo="deportivo"
             data-genero="hombre"
@@ -730,7 +693,6 @@
             </a>
         </div>
         <div class="producto"
-            data-oferta="true"
             data-categoria="hombre"
             data-tipo="short"
             data-color="blanco"
@@ -787,7 +749,6 @@
             </a>
         </div>
          <div class="producto"
-            data-oferta="true"
             data-categoria="mujer"
             data-tipo="jersey"
             data-color="verde"
@@ -886,6 +847,7 @@
             </a>
         </div>
         <div class="producto"
+            data-oferta="true"
             data-categoria="hombre"
             data-tipo="conjunto"
             data-color="verde"
@@ -912,6 +874,7 @@
                 <p class="nombre">Jersey Juego Jordan Blanca</p>
                 <p class="precio">$500</p>
             </a>
+        </div>
         
     </main>
 
@@ -927,8 +890,19 @@
         </a>
     </footer>
 
-       <script>
+    <script>
     const params = new URLSearchParams(window.location.search);
+    const soloOfertas = params.get("ofertas") === "true";
+
+    // 🔥 SI SOLO QUIERE OFERTAS -> quitar TODOS los que no tengan oferta
+    if (soloOfertas) {
+    document.querySelectorAll(".producto").forEach(p => {
+        if (p.dataset.oferta !== "true") {
+        p.remove(); // <-- los elimina del DOM, mejor que ocultarlos
+        }
+    });
+    }
+
 
     let categoria = params.get("categoria"); 
     let buscar = params.get("buscar");  
@@ -940,12 +914,10 @@
             .trim();
 
         t = t.replace(/(os|as|es)$/, "");
-
         t = t.replace(/[aeiou]$/, "");
 
         return t;
     }
-
 
     const sinonimos = {
         playera: ["camisa", "camiseta"],
@@ -971,7 +943,6 @@
         return [palabraNormalizada];
     }
 
-
     function distancia(a, b) {
         const dp = Array.from({ length: a.length + 1 }, (_, i) =>
             Array.from({ length: b.length + 1 }, (_, j) =>
@@ -992,10 +963,11 @@
     }
 
     function esParecido(a, b) {
-        return distancia(a, b) <= 2; 
+        return distancia(a, b) <= 2;
     }
 
     const filtroCategoria = categoria ? normalizar(categoria) : null;
+
 
     let palabrasBusqueda = [];
     if (buscar) {
@@ -1003,15 +975,12 @@
             .split(" ")
             .map(p => normalizar(p)) 
             .filter(p => p.length > 0)
-
             .flatMap(expandirSinonimos); 
     }
 
-    //FILTRO
     let productosEncontrados = 0;
 
     document.querySelectorAll(".producto").forEach(producto => {
-
 
         const categoriaP = normalizar(producto.dataset.categoria || "");
         const tipoP = normalizar(producto.dataset.tipo || "");
@@ -1051,7 +1020,6 @@
                 puntaje += 3;
             }
 
-            // Coincidencia por error ortografico
             if (
                 esParecido(palabra, nombreP) ||
                 esParecido(palabra, tipoP) ||
@@ -1061,7 +1029,6 @@
             }
         }
 
-        // Si no hay busqueda, mostrar todo
         if (palabrasBusqueda.length === 0 && !filtroCategoria) {
             puntaje = 1;
         }
@@ -1076,14 +1043,12 @@
         }
     });
 
-    // ---------------- ORDENAR POR RELEVANCIA ----------------
     const contenedor = document.querySelector(".productos-grid");
     const productosOrdenados = [...document.querySelectorAll(".producto")].sort(
         (a, b) => (b.dataset.puntaje || 0) - (a.dataset.puntaje || 0)
     );
     productosOrdenados.forEach(p => contenedor.appendChild(p));
 
-    // ---------------- MENSAJE SI NO SE ENCUENTRA NADA ----------------
     if (productosEncontrados === 0) {
         const msg = document.createElement("div");
         msg.style.textAlign = "center";
@@ -1102,24 +1067,23 @@
         contenedor.innerHTML = "";
         contenedor.appendChild(msg);
     }
+    
 </script>
-<script src="carrito.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const productos = document.querySelectorAll('.producto[data-oferta="true"]');
-
-    productos.forEach(prod => {
-        const etiqueta = document.createElement("div");
-        etiqueta.classList.add("etiqueta-oferta");
-        etiqueta.textContent = "OFERTA";
-
-        // Insertarla dentro del <a> pero antes de la imagen
-        const aTag = prod.querySelector("a");
-        aTag.prepend(etiqueta);
-    });
+  document.querySelectorAll(".producto[data-oferta]").forEach(prod => {
+    const etiqueta = document.createElement("div");
+    etiqueta.className = "etiqueta-oferta";
+    etiqueta.textContent = "OFERTA";
+    prod.appendChild(etiqueta);
+  });
 });
 </script>
+
+<script src="carrito.js"></script>
+
+
 
 
 

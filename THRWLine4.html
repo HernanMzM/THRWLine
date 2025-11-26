@@ -311,6 +311,25 @@
     mostrarCanasta();
 </script>
 <script src="carrito.js"></script>
+<script>
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
+function irBuscar() {
+    const texto = searchInput.value.trim();
+    if (texto !== "") {
+        window.location.href = "THRWLine2.html?buscar=" + encodeURIComponent(texto);
+    }
+}
+
+searchBtn.addEventListener("click", irBuscar);
+
+searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        irBuscar();
+    }
+});
+</script>
 
 </body>
 </html>
